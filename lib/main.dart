@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fit_fit_meal/screens/auth/forgot_passwd_page.dart';
-import 'package:fit_fit_meal/screens/auth/login_page.dart';
-import 'package:fit_fit_meal/screens/auth/register_page.dart';
+import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
+import 'package:fit_fit_meal/screens/auth/signIn/signIn_page.dart';
+import 'package:fit_fit_meal/screens/auth/signUp/signUp_page.dart';
 import 'package:fit_fit_meal/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

@@ -1,6 +1,7 @@
 import 'package:fit_fit_meal/screens/home/home_signUp_button.dart';
 import 'package:fit_fit_meal/screens/home/home_signIn_button.dart';
 import 'package:fit_fit_meal/screens/home/home_title.dart';
+import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,16 +17,7 @@ class Home extends StatelessWidget {
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Colors.red,
-                    Colors.orange,
-                  ],
-                ),
-              ),
+              decoration: homeGradientBacground(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
