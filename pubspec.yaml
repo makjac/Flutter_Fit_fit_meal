@@ -41,6 +41,7 @@ dependencies:
   bloc: ^8.1.0
   equatable: ^2.0.5
   flutter_qr_bar_scanner: ^3.0.2
+  go_router: ^5.1.1
 
 dev_dependencies:
   flutter_test:
