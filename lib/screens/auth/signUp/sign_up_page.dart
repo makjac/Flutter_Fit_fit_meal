@@ -1,3 +1,4 @@
+import 'package:fit_fit_meal/screens/auth/signUp/sign_up_context.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:fit_fit_meal/widgets/buttons/pop_back_arrow.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,10 @@ class RegisterPage extends StatelessWidget {
           width: double.infinity,
           decoration: homeGradientBacground(),
           child: Stack(
-            children: const [
-              Positioned(
+            alignment: Alignment.center,
+            children: [
+              SignUpContext(),
+              const Positioned(
                 top: 5,
                 left: 5,
                 child: PopBackArrow(),
