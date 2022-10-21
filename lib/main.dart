@@ -4,7 +4,7 @@ import 'package:fit_fit_meal/firebase_options.dart';
 import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
 import 'package:fit_fit_meal/screens/auth/signUp/sign_up_page.dart';
-import 'package:fit_fit_meal/screens/home/home_screen.dart';
+import 'package:fit_fit_meal/screens/home/home_page.dart';
 import 'package:fit_fit_meal/screens/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

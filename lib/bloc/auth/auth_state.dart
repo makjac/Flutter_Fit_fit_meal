@@ -26,6 +26,10 @@ class SigningOut extends AuthState {}
 
 class SignedOut extends AuthState {}
 
+class CheckinUser extends AuthState {}
+
+class UserIsAvailable extends AuthState {}
+
 class AuthError extends AuthState {
   final String error;
 

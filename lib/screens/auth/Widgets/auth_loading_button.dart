@@ -15,7 +15,9 @@ class AuthLoadingButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: authButtonStyle(),
-        child: const CircularProgressIndicator(),
+        child: const CircularProgressIndicator(
+          color: Colors.red,
+        ),
       ),
     );
   }

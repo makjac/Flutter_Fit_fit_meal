@@ -46,3 +46,5 @@ class RefreshPassword extends AuthEvent {
   @override
   List<Object> get props => [email];
 }
+
+class ChceckUser extends AuthEvent {}
