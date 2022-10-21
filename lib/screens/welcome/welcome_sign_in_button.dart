@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeSignInButton extends StatelessWidget {
-  const HomeSignInButton({super.key});
+class WelcomeSignInButton extends StatelessWidget {
+  const WelcomeSignInButton({super.key});
 
   @override
   Widget build(BuildContext context) {

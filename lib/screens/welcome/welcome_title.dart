@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeTitle extends StatelessWidget {
-  const HomeTitle({super.key});
+class WelcomeTitle extends StatelessWidget {
+  const WelcomeTitle({super.key});
 
   @override
   Widget build(BuildContext context) {

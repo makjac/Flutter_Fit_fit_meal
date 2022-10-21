@@ -1,13 +1,13 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
-import 'package:fit_fit_meal/widgets/buttonStyle/auth_button_style.dart';
+import 'package:fit_fit_meal/screens/auth/Widgets/auth_button.dart';
+import 'package:fit_fit_meal/screens/auth/Widgets/auth_email_text_field.dart';
+import 'package:fit_fit_meal/screens/auth/Widgets/auth_loading_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../utils/validator.dart';
 import '../../../widgets/inputDecoration/border_none.dart';
-import '../../../widgets/inputDecoration/border_top_left.dart';
 import '../Widgets/auth_title.dart';
 
 class SignUpContext extends StatelessWidget {
@@ -31,13 +31,32 @@ class SignUpContext extends StatelessWidget {
             key: _formKey,
             child: Column(
               children: [
-                _emailTextField(width),
+                AuthEmailTextField(
+                    onSaved: (newEmail) => _email = newEmail ?? ""),
                 const SizedBox(height: 8),
                 _passwdTextField(width),
                 const SizedBox(height: 8),
                 _repeatPasswdTextField(width),
                 const SizedBox(height: 8),
-                _signUpbutton(width, context),
+                BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, state) {
+                    if (State is CreatingAccount) {
+                      return const AuthLoadingButton();
+                    }
+                    return AuthButton(
+                      formKey: _formKey,
+                      label: "Sign up",
+                      onPressed: () {
+                        final isValid = _formKey.currentState?.validate();
+                        if (isValid == true) {
+                          _formKey.currentState?.save();
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(SignUp(email: _email, password: _password));
+                        }
+                      },
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -45,27 +64,6 @@ class SignUpContext extends StatelessWidget {
       ),
     );
   }
-
-  Widget _emailTextField(double width) => SizedBox(
-        width: width / 1.7,
-        child: TextFormField(
-          decoration: borderTopLeft(
-            "Email",
-            const Icon(
-              Icons.email,
-              color: Colors.white,
-            ),
-          ),
-          style: const TextStyle(color: Colors.white),
-          validator: (value) {
-            if (Validator.isEmail(value)) {
-              return null;
-            }
-            return "email is incorrect!";
-          },
-          onSaved: (newEmail) => _email = newEmail ?? "",
-        ),
-      );
 
   Widget _passwdTextField(double width) => SizedBox(
         width: width / 1.7,
@@ -102,26 +100,6 @@ class SignUpContext extends StatelessWidget {
             return null;
           },
           onChanged: (password) => _repatPassword = password,
-        ),
-      );
-
-  Widget _signUpbutton(double width, BuildContext context) => SizedBox(
-        width: width / 1.7,
-        height: 50,
-        child: ElevatedButton(
-          onPressed: () {
-            final isValid = _formKey.currentState?.validate();
-            if (isValid == true) {
-              _formKey.currentState?.save();
-              BlocProvider.of<AuthBloc>(context)
-                  .add(SignUp(email: _email, password: _password));
-            }
-          },
-          style: authButtonStyle(),
-          child: const Text(
-            "Sign up",
-            style: TextStyle(color: Colors.red, fontSize: 16),
-          ),
         ),
       );
 }

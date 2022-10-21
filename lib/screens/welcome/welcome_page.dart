@@ -1,11 +1,11 @@
-import 'package:fit_fit_meal/screens/home/home_sign_up_button.dart';
-import 'package:fit_fit_meal/screens/home/home_sign_in_button.dart';
-import 'package:fit_fit_meal/screens/home/home_title.dart';
+import 'package:fit_fit_meal/screens/welcome/welcome_sign_up_button.dart';
+import 'package:fit_fit_meal/screens/welcome/welcome_sign_in_button.dart';
+import 'package:fit_fit_meal/screens/welcome/welcome_title.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class Home extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  HomeTitle(),
+                  WelcomeTitle(),
                   SizedBox(height: 150),
-                  HomeSignUpButton(),
-                  HomeSignInButton(),
+                  WelcomeSignUpButton(),
+                  WelcomeSignInButton(),
                 ],
               ),
             ),
