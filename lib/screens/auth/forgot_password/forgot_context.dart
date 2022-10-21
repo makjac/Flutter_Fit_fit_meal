@@ -1,10 +1,14 @@
+import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
+import 'package:fit_fit_meal/widgets/buttonStyle/auth_button_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../utils/validator.dart';
 import '../../../widgets/inputDecoration/border_top_left.dart';
 import '../Widgets/auth_title.dart';
 
 class ForgotContext extends StatelessWidget {
+  String _email = "";
   final _formKey = GlobalKey<FormState>();
 
   ForgotContext({super.key});
@@ -24,7 +28,7 @@ class ForgotContext extends StatelessWidget {
             children: [
               _emailTextField(width),
               const SizedBox(height: 8),
-              _signInButton(width),
+              _signInButton(width, context),
             ],
           ),
         ),
@@ -42,31 +46,30 @@ class ForgotContext extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          style: const TextStyle(color: Colors.white),
           validator: (value) {
             if (Validator.isEmail(value)) {
               return null;
             }
             return "email is incorrect!";
           },
+          onSaved: (newEmail) => _email = newEmail ?? "",
         ),
       );
 
-  Widget _signInButton(double width) => SizedBox(
+  Widget _signInButton(double width, BuildContext context) => SizedBox(
         width: width / 1.7,
         height: 50,
         child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(5),
-                topLeft: Radius.circular(5),
-                bottomRight: Radius.circular(20),
-                topRight: Radius.circular(5),
-              ),
-            ),
-          ),
+          onPressed: () {
+            final isValid = _formKey.currentState?.validate();
+            if (isValid == true) {
+              _formKey.currentState?.save();
+              BlocProvider.of<AuthBloc>(context)
+                  .add(RefreshPassword(email: _email));
+            }
+          },
+          style: authButtonStyle(),
           child: const Text(
             "Sign In",
             style: TextStyle(color: Colors.red, fontSize: 16),

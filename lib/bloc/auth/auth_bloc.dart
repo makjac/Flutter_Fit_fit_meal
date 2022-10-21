@@ -32,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> _signUp(SignUp event, Emitter<AuthState> emit) async {
     try {
       emit(CreatingAccount());
-      _authRepository.signIn(email: event.email, passwd: event.password);
+      await _authRepository.signUp(email: event.email, passwd: event.password);
       emit(AccountCreated());
     } catch (error) {
       emit(AuthError(error: error.toString()));
