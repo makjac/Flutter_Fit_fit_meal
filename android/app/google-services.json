@@ -29,6 +29,13 @@
             {
               "client_id": "572772243457-ekpnm8g84k25vhou66aemie2637o2vm2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "572772243457-32gughj64drmri037mtnspt6maj0k0j8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitFitMeal"
+              }
             }
           ]
         }

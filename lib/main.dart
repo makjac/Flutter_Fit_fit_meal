@@ -1,16 +1,30 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
+import 'package:fit_fit_meal/firebase_options.dart';
 import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
 import 'package:fit_fit_meal/screens/auth/signUp/sign_up_page.dart';
 import 'package:fit_fit_meal/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const FitFitMeal());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(),
+        ),
+      ],
+      child: const FitFitMeal(),
+    ),
+  );
 }
 
 class FitFitMeal extends StatefulWidget {

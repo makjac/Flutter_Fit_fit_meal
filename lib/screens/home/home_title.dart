@@ -16,7 +16,7 @@ class HomeTitle extends StatelessWidget {
           ),
         ),
         Text(
-          "Eat healthy, fell great!",
+          "Eat healthy, feel great!",
           style: TextStyle(
               fontWeight: FontWeight.w500, color: Colors.white, fontSize: 18),
         ),
