@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class MenuElement extends Equatable {
+class MenuElement {
   final String label;
   final Icon icon;
 
@@ -10,10 +10,4 @@ class MenuElement extends Equatable {
     required this.label,
     required this.icon,
   });
-
-  @override
-  List<Object?> get props => [
-        label,
-        icon,
-      ];
 }

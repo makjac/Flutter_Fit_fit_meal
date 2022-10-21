@@ -1,22 +1,68 @@
+import 'package:fit_fit_meal/data/models/menu_item.dart';
 import 'package:fit_fit_meal/screens/main/main_page.dart';
 import 'package:fit_fit_meal/screens/menu/menu_page.dart';
+import 'package:fit_fit_meal/screens/profile/profile_page.dart';
+import 'package:fit_fit_meal/screens/scaner/scaner_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:go_router/go_router.dart';
 
-class HomePage extends StatelessWidget {
+import '../../bloc/auth/auth_bloc.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  MenuElement currentElement = MenuElements.main;
+  @override
   Widget build(BuildContext context) {
-    return ZoomDrawer(
-      menuScreen: const MenuPage(),
-      mainScreen: const MainPage(),
-      showShadow: true,
-      angle: -3,
-      borderRadius: 20,
-      style: DrawerStyle.defaultStyle,
-      slideWidth: MediaQuery.of(context).size.width * 0.7,
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is SignedOut) {
+          context.go("/");
+        }
+      },
+      child: ZoomDrawer(
+        menuScreen: Builder(
+          builder: (context) => MenuPage(
+            currentElement: currentElement,
+            onSelectedElement: (element) {
+              setState(() {
+                currentElement = element;
+                ZoomDrawer.of(context)?.close();
+              });
+            },
+          ),
+        ),
+        mainScreen: _getScreen(),
+        menuBackgroundColor: Colors.orange,
+        angle: 0,
+        mainScreenScale: -0.1,
+        borderRadius: 20,
+        style: DrawerStyle.style3,
+        slideWidth: MediaQuery.of(context).size.width * 0.7,
+        mainScreenTapClose: true,
+        menuScreenWidth: MediaQuery.of(context).size.width,
+        duration: const Duration(milliseconds: 150),
+      ),
     );
+  }
+
+  Widget _getScreen() {
+    switch (currentElement) {
+      case MenuElements.main:
+        return const MainPage();
+      case MenuElements.scanProduct:
+        return const ScanerPage();
+      case MenuElements.profile:
+        return const ProfilePage();
+    }
+    return const MainPage();
   }
 }
