@@ -8,6 +8,16 @@ class AuthRepository extends BaseAuthRepository {
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
   @override
+  Future<String?> getUID() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      return user?.uid;
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
   Future<void> resetPasswd({required String email}) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
