@@ -23,7 +23,7 @@ Future main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(),
+          create: (context) => AuthBloc()..add(CheckUser()),
         ),
       ],
       child: const FitFitMeal(),

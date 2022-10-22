@@ -1,11 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_fit_meal/data/repository/firbase/base_auth_repository.dart';
+import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 
 class AuthRepository extends BaseAuthRepository {
   final FirebaseAuth _firebaseAuth;
 
   AuthRepository({FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+
+  @override
+  bool checkUser() {
+    try {
+      final firebaseUID = _firebaseAuth.currentUser?.uid;
+      if (firebaseUID != null) {
+        return firebaseUID == UserSharedPreferences.getUserUID();
+      }
+      return false;
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
 
   @override
   Future<String?> getUID() async {

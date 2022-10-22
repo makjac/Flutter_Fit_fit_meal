@@ -30,6 +30,8 @@ class CheckinUser extends AuthState {}
 
 class UserIsAvailable extends AuthState {}
 
+class NoUser extends AuthState {}
+
 class AuthError extends AuthState {
   final String error;
 

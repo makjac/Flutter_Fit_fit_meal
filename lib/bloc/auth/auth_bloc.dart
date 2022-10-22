@@ -14,10 +14,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({UserController? userController})
       : _userController = userController ?? UserController(),
         super(AuthInitial()) {
+    on<CheckUser>(_checkUser);
     on<SignIn>(_signIn);
     on<SignUp>(_signUp);
     on<SignOut>(_signOut);
     on<RefreshPassword>(_refreshPassword);
+  }
+
+  FutureOr<void> _checkUser(CheckUser event, Emitter<AuthState> emit) async {
+    try {
+      emit(CheckinUser());
+      if (_userController.checkUser()) {
+        emit(UserIsAvailable());
+      } else {
+        emit(NoUser());
+      }
+    } catch (error) {
+      emit(AuthError(error: error.toString()));
+    }
   }
 
   FutureOr<void> _signIn(SignIn event, Emitter<AuthState> emit) async {

@@ -1,4 +1,6 @@
 abstract class BaseAuthRepository {
+  bool checkUser();
+
   Future<String?> getUID();
 
   Future<void> signUp({required String email, required String passwd});

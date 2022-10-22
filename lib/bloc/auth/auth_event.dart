@@ -47,4 +47,4 @@ class RefreshPassword extends AuthEvent {
   List<Object> get props => [email];
 }
 
-class ChceckUser extends AuthEvent {}
+class CheckUser extends AuthEvent {}
