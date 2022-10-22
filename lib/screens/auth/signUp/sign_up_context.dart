@@ -69,6 +69,7 @@ class SignUpContext extends StatelessWidget {
         width: width / 1.7,
         child: TextFormField(
           obscureText: true,
+          cursorColor: Colors.white,
           style: const TextStyle(color: Colors.white),
           decoration: borderNone(
             "Password",
@@ -85,6 +86,7 @@ class SignUpContext extends StatelessWidget {
         width: width / 1.7,
         child: TextFormField(
           obscureText: true,
+          cursorColor: Colors.white,
           style: const TextStyle(color: Colors.white),
           decoration: borderNone(
             "Repeat password",

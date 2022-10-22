@@ -7,10 +7,13 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       appBar: AppBar(
         title: const Text("Profile"),
         centerTitle: true,
         leading: const MenuWidget(),
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.orange,
       ),
     );
   }

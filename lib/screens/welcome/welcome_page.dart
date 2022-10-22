@@ -9,13 +9,13 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          backgroundColor: Colors.red,
-          body: Center(
-            child: Container(
-              width: double.infinity,
-              decoration: homeGradientBacground(),
+    return Scaffold(
+        backgroundColor: Colors.red,
+        body: Center(
+          child: Container(
+            width: double.infinity,
+            decoration: homeGradientBacground(),
+            child: SafeArea(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

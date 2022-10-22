@@ -68,6 +68,7 @@ class SignInContext extends StatelessWidget {
         width: width / 1.7,
         child: TextFormField(
           obscureText: true,
+          cursorColor: Colors.white,
           decoration: borderNone(
             "Password",
             const Icon(

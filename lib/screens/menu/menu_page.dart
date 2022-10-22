@@ -31,7 +31,7 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.red,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

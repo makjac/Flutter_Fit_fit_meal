@@ -10,6 +10,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../bloc/auth/auth_bloc.dart';
+import '../../widgets/snackBar/error_snack_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,6 +28,9 @@ class _HomePageState extends State<HomePage> {
         if (state is SignedOut) {
           context.go("/");
         }
+        if (state is AuthError) {
+          showErrorSnackBar(state.error, context);
+        }
       },
       child: ZoomDrawer(
         menuScreen: Builder(
@@ -41,9 +45,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         mainScreen: _getScreen(),
-        menuBackgroundColor: Colors.orange,
-        angle: 0,
-        mainScreenScale: -0.1,
+        menuBackgroundColor: Colors.red,
+        showShadow: true,
+        angle: -5,
+        mainScreenScale: 0,
         borderRadius: 20,
         style: DrawerStyle.style3,
         slideWidth: MediaQuery.of(context).size.width * 0.7,

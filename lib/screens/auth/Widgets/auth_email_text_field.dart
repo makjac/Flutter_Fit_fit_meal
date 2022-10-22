@@ -17,6 +17,9 @@ class AuthEmailTextField extends StatelessWidget {
     return SizedBox(
       width: width / 1.7,
       child: TextFormField(
+        enableSuggestions: true,
+        cursorColor: Colors.white,
+        keyboardType: TextInputType.emailAddress,
         decoration: borderTopLeft(
           "Email",
           const Icon(
