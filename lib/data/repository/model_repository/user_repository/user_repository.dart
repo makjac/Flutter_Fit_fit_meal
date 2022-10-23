@@ -20,6 +20,16 @@ class UserRepository extends BaseUserRepository {
   }
 
   @override
+  Future<void> initUserDocument(String userUID) async {
+    try {
+      final userRef = _firestore.collection('user').doc(userUID);
+      await userRef.set({'login': ""});
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
   Future<void> updateUserData(UserModel user) async {
     try {
       final userRef = _firestore.collection('user').doc(user.uid);

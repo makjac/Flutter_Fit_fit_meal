@@ -3,7 +3,7 @@ abstract class BaseAuthRepository {
 
   Future<String?> getUID();
 
-  Future<void> signUp({required String email, required String passwd});
+  Future<String?> signUp({required String email, required String passwd});
 
   Future<void> signIn({required String email, required String passwd});
 

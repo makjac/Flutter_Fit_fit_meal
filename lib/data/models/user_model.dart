@@ -25,12 +25,20 @@ class UserModel extends Equatable {
 
   static UserModel fromSnapshot(DocumentSnapshot snap) => UserModel(
         uid: snap.id,
-        login: snap['login'] as String?,
-        gender: snap['gender'] as bool?,
-        weight: snap['weight'] as num?,
-        height: snap['height'] as num?,
-        age: snap['age'] as num?,
-        pal: snap['pal'] as num?,
+        login: snap.data().toString().contains('login')
+            ? snap['login'] as String?
+            : "",
+        gender: snap.data().toString().contains('gender')
+            ? snap['gender'] as bool?
+            : true,
+        weight: snap.data().toString().contains('weight')
+            ? snap['weight'] as num?
+            : 0,
+        height: snap.data().toString().contains('height')
+            ? snap['height'] as num?
+            : 0,
+        age: snap.data().toString().contains('age') ? snap['age'] as num? : 0,
+        pal: snap.data().toString().contains('pal') ? snap['pal'] as num? : 0,
       );
 
   Map<String, dynamic> toMap() {

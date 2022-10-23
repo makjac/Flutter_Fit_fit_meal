@@ -60,10 +60,12 @@ class AuthRepository extends BaseAuthRepository {
   }
 
   @override
-  Future<void> signUp({required String email, required String passwd}) async {
+  Future<String?> signUp(
+      {required String email, required String passwd}) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final user = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: passwd);
+      return user.user?.uid;
     } catch (error) {
       throw Exception(error);
     }

@@ -10,9 +10,7 @@ class UserSharedPreferences {
   static const _keyUserWeight = 'user_weight';
   static const _keyUserHeight = 'user_height';
   static const _keyUserAge = 'user_age';
-  static const _keyUserPPM = 'user_ppm';
   static const _keyUserPAL = 'user_pal';
-  static const _keyUserCPM = 'user_cpm';
 
   static Future init() async {
     _preferences = await SharedPreferences.getInstance();
@@ -58,21 +56,9 @@ class UserSharedPreferences {
 
   static int? getUserAge() => _preferences.getInt(_keyUserAge);
 
-  // user_ppm
-  static Future setUserPPM(double ppm) async =>
-      _preferences.setDouble(_keyUserPPM, ppm);
-
-  static double? getUserPPM() => _preferences.getDouble(_keyUserPPM);
-
   // user_pal
   static Future setUserPAL(double pal) async =>
       _preferences.setDouble(_keyUserPAL, pal);
 
   static double? getUserPAL() => _preferences.getDouble(_keyUserPAL);
-
-  // user_cpm
-  static Future setUserCPM(double cpm) async =>
-      _preferences.setDouble(_keyUserCPM, cpm);
-
-  static double? getUserCPM() => _preferences.getDouble(_keyUserCPM);
 }

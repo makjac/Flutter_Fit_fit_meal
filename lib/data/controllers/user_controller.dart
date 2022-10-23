@@ -39,7 +39,10 @@ class UserController extends BaseUserController {
   Future<void> signUpUser(
       {required String email, required String passwd}) async {
     try {
-      await _authRepository.signUp(email: email, passwd: passwd);
+      final userUID =
+          await _authRepository.signUp(email: email, passwd: passwd);
+      await _userRepository.initUserDocument(userUID!);
+      await _authRepository.signIn(email: email, passwd: passwd);
     } catch (error) {
       throw Exception(error);
     }

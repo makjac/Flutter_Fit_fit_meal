@@ -17,7 +17,7 @@ class RegisterPage extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AccountCreated) {
-            context.go("/");
+            context.go("/tutorial");
           }
           if (state is AuthError) {
             showErrorSnackBar(state.error, context);
