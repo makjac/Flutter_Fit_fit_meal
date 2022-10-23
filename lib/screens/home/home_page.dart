@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         slideWidth: MediaQuery.of(context).size.width * 0.7,
         mainScreenTapClose: true,
         menuScreenWidth: MediaQuery.of(context).size.width,
-        duration: const Duration(milliseconds: 150),
+        duration: const Duration(milliseconds: 300),
       ),
     );
   }

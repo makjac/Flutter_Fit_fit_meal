@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fit_fit_meal/data/controllers/user_controller.dart';
-import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
