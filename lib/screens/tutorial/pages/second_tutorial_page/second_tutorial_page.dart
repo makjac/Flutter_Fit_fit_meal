@@ -1,3 +1,6 @@
+import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/gender_picker.dart';
+import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/height_picekr.dart';
+import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/int_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
@@ -14,8 +17,8 @@ class SecondTuorialPage extends StatefulWidget {
 class _SecondTuorialPageState extends State<SecondTuorialPage> {
   bool? gender;
   int height = 0;
-  double? wheight;
-  int? age;
+  int wheight = 0;
+  int age = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +47,45 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         _helpTitle(),
-        _genderPicker(width),
-        _heightPicker(),
+        GenderPicker(
+          gender: gender,
+          onChanged: (value) => setState(() {
+            gender = value;
+          }),
+        ),
+        const SizedBox(height: 8),
+        HeightPicker(
+          height: height,
+          onChanged: (value) => setState(() {
+            height = value.ceil();
+          }),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            Expanded(
+              child: IntPicker(
+                label: "Wheight",
+                unit: "kg",
+                isUnit: true,
+                value: wheight,
+                onChanged: (value) => setState(() {
+                  wheight = value;
+                }),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: IntPicker(
+                label: "Age",
+                value: age,
+                onChanged: (value) => setState(() {
+                  age = value;
+                }),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
@@ -65,95 +105,5 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
           fontSize: 25,
         ),
         textAlign: TextAlign.center,
-      );
-
-  Widget _genderPicker(double width) => Row(
-        children: [
-          Expanded(
-            child: _genderButton(
-              true,
-              "Male",
-              const Icon(
-                Icons.male,
-                size: 40,
-              ),
-            ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: _genderButton(
-              false,
-              "Female",
-              const Icon(
-                Icons.female,
-                size: 40,
-              ),
-            ),
-          ),
-        ],
-      );
-
-  Widget _genderButton(bool isMale, String label, Icon icon) => SizedBox(
-        height: 100,
-        child: ElevatedButton(
-          onPressed: () => setState(() {
-            gender = isMale;
-          }),
-          style: (gender == isMale) ? _pickedButton() : _unPickedButton(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              icon,
-              Text(label),
-            ],
-          ),
-        ),
-      );
-
-  ButtonStyle _pickedButton() => ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.red,
-      );
-
-  ButtonStyle _unPickedButton() => ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(150, 244, 67, 54),
-        foregroundColor: const Color.fromARGB(100, 255, 255, 255),
-      );
-
-  Widget _heightPicker() => Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: Column(
-            children: <Widget>[
-              Text(
-                "Height $height cm",
-                style: const TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-              const SizedBox(height: 8),
-              Slider.adaptive(
-                thumbColor: Colors.red,
-                activeColor: Colors.red,
-                inactiveColor: const Color.fromARGB(74, 244, 67, 54),
-                label: "$height",
-                value: height.toDouble(),
-                onChanged: (value) => setState(() {
-                  height = value.ceil();
-                }),
-                min: 0,
-                max: 300,
-              )
-            ],
-          ),
-        ),
       );
 }
