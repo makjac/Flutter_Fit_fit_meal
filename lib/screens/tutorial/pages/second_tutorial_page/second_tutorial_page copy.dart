@@ -13,7 +13,7 @@ class SecondTuorialPage extends StatefulWidget {
 
 class _SecondTuorialPageState extends State<SecondTuorialPage> {
   bool? gender;
-  int height = 0;
+  double? height;
   double? wheight;
   int? age;
 
@@ -45,7 +45,7 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
       children: <Widget>[
         _helpTitle(),
         _genderPicker(width),
-        _heightPicker(),
+        _wheightPicker("kg"),
       ],
     );
   }
@@ -94,7 +94,7 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
       );
 
   Widget _genderButton(bool isMale, String label, Icon icon) => SizedBox(
-        height: 100,
+        height: 70,
         child: ElevatedButton(
           onPressed: () => setState(() {
             gender = isMale;
@@ -116,43 +116,47 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
       );
 
   ButtonStyle _unPickedButton() => ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(150, 244, 67, 54),
-        foregroundColor: const Color.fromARGB(100, 255, 255, 255),
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       );
 
-  Widget _heightPicker() => Container(
+  Widget _wheightPicker(String unit) => SizedBox(
+        height: 200,
         width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: Column(
-            children: <Widget>[
-              Text(
-                "Height $height cm",
-                style: const TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+        child: RotatedBox(
+          quarterTurns: -1,
+          child: ListWheelScrollView.useDelegate(
+            itemExtent: 70,
+            overAndUnderCenterOpacity: 0.7,
+            magnification: 1.5,
+            squeeze: 0.8,
+            physics: const FixedExtentScrollPhysics(),
+            perspective: 0.004,
+            diameterRatio: 1.7,
+            useMagnifier: true,
+            childDelegate: ListWheelChildBuilderDelegate(
+              childCount: 1000,
+              builder: (context, index) => RotatedBox(
+                quarterTurns: 1,
+                child: SizedBox(
+                  height: 40,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text("$index $unit"),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              const SizedBox(height: 8),
-              Slider.adaptive(
-                thumbColor: Colors.red,
-                activeColor: Colors.red,
-                inactiveColor: const Color.fromARGB(74, 244, 67, 54),
-                label: "$height",
-                value: height.toDouble(),
-                onChanged: (value) => setState(() {
-                  height = value.ceil();
-                }),
-                min: 0,
-                max: 300,
-              )
-            ],
+            ),
           ),
         ),
       );
