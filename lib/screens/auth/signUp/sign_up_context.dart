@@ -4,6 +4,7 @@ import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_button.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_email_text_field.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_loading_button.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,7 @@ class SignUpContext extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(Insets.s),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -33,11 +34,11 @@ class SignUpContext extends StatelessWidget {
               children: [
                 AuthEmailTextField(
                     onSaved: (newEmail) => _email = newEmail ?? ""),
-                const SizedBox(height: 8),
+                const SizedBox(height: Insets.xs),
                 _passwdTextField(width),
-                const SizedBox(height: 8),
+                const SizedBox(height: Insets.xs),
                 _repeatPasswdTextField(width),
-                const SizedBox(height: 8),
+                const SizedBox(height: Insets.xs),
                 BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
                     if (State is CreatingAccount) {

@@ -1,3 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
+import 'package:fit_fit_meal/utils/scale.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +21,7 @@ class FirstTutorialPage extends StatelessWidget {
         decoration: homeGradientBacground(),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(Insets.s),
             child: orientation == Orientation.portrait
                 ? _portraitView(width)
                 : _landscapeView(width),
@@ -37,7 +40,7 @@ class FirstTutorialPage extends StatelessWidget {
           child: _welcomeLottie(),
         ),
         Expanded(
-          child: _welcomeTiltle(),
+          child: _welcomeTiltle(width),
         ),
         const Spacer(),
         Expanded(
@@ -57,11 +60,11 @@ class FirstTutorialPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const Spacer(
-                flex: 2,
+                flex: 1,
               ),
               Expanded(
                 flex: 5,
-                child: _welcomeTiltle(),
+                child: _welcomeTiltle(width),
               ),
               Expanded(
                 flex: 3,
@@ -85,18 +88,23 @@ class FirstTutorialPage extends StatelessWidget {
         height: 270,
       );
 
-  Widget _welcomeTiltle() => Column(
-        children: const <Widget>[
-          Text(
+  Widget _welcomeTiltle(double width) => Column(
+        children: <Widget>[
+          AutoSizeText(
             "Wellcome!",
-            style: TextStyle(
+            maxLines: 1,
+            textScaleFactor: Scale.textScale(width, 1),
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 40),
           ),
-          Text(
+          AutoSizeText(
             "Nice to meet you! What is your name?",
-            style: TextStyle(
+            maxLines: 2,
+            textScaleFactor: Scale.textScale(width, 1),
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
-          )
+            textAlign: TextAlign.center,
+          ),
         ],
       );
 

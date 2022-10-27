@@ -31,10 +31,11 @@ class _TutorialPageState extends State<TutorialPage> {
 
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       backgroundColor: Colors.orange,
       body: Container(
-        padding: EdgeInsets.only(bottom: _bottomSheetHeight),
+        padding: EdgeInsets.only(bottom: _heightBottomSheet(orientation)),
         child: PageView(
           controller: _pageController,
           onPageChanged: (pageNumber) => setState(() {
@@ -46,12 +47,15 @@ class _TutorialPageState extends State<TutorialPage> {
         ),
       ),
       bottomSheet: isLastPage
-          ? EndTutorialButton(height: _bottomSheetHeight)
+          ? EndTutorialButton(height: _heightBottomSheet(orientation))
           : TutorialFooter(
-              height: _bottomSheetHeight,
+              height: _heightBottomSheet(orientation),
               pageController: _pageController,
               pageCount: _pages.length,
             ),
     );
   }
+
+  double _heightBottomSheet(Orientation orientation) =>
+      orientation == Orientation.portrait ? 65.0 : 50.0;
 }

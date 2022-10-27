@@ -1,5 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/screens/tutorial/utils/tutorial_elements_shape.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../utils/insets.dart';
 
 // ignore: must_be_immutable
 class IntPicker extends StatelessWidget {
@@ -20,70 +24,46 @@ class IntPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: tutorialElementsRadius(),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(Insets.xs),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(
+            AutoSizeText(
               label,
+              maxLines: 1,
               style: const TextStyle(
                   color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: TextFormField(
-                    controller: TextEditingController()..text = '$value',
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 199, 54, 44),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
-                    textAlign: isUnit ? TextAlign.right : TextAlign.center,
-                    decoration: const InputDecoration(
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                isUnit
-                    ? const Expanded(
-                        child: Text(
-                          "kg",
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14),
-                        ),
-                      )
-                    : const SizedBox(
-                        height: 0.0001,
-                        width: 0.0001,
-                      ),
-              ],
-            ),
+            const SizedBox(height: Insets.xs),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: Insets.xs),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   InkWell(
                     onTap: () => onChanged(++value),
                     child: const CircleAvatar(
-                      radius: 18,
+                      radius: 14,
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
                       child: Icon(Icons.arrow_drop_up_sharp),
                     ),
                   ),
+                  AutoSizeText(
+                    "$value",
+                    maxLines: 1,
+                    style: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 23),
+                  ),
+                  //Flexible(flex: 3, child: _numberField()),
                   InkWell(
                     onTap: () {
                       if (value > 0) {
@@ -91,7 +71,7 @@ class IntPicker extends StatelessWidget {
                       }
                     },
                     child: const CircleAvatar(
-                      radius: 18,
+                      radius: 14,
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
                       child: Icon(Icons.arrow_drop_down_sharp),

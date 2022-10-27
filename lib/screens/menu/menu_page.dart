@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/menu_item.dart';
@@ -52,7 +53,7 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget _menuTitle() => Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(Insets.s),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const <Widget>[
@@ -63,7 +64,7 @@ class MenuPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 40),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: Insets.xs),
             Text(
               "Eat healthy, feel great!",
               style: TextStyle(
@@ -89,7 +90,7 @@ class MenuPage extends StatelessWidget {
       );
 
   Widget _logoutButton(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(Insets.s),
         child: SizedBox(
           width: MediaQuery.of(context).size.width / 1.8,
           child: OutlinedButton(
@@ -109,7 +110,7 @@ class MenuPage extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(Insets.xs),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
@@ -118,7 +119,7 @@ class MenuPage extends StatelessWidget {
                     color: Colors.white,
                     size: 25,
                   ),
-                  SizedBox(width: 8),
+                  SizedBox(width: Insets.xs),
                   Text(
                     "Logout",
                     style: TextStyle(

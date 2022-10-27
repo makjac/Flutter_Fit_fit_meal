@@ -1,3 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/screens/tutorial/utils/tutorial_elements_shape.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 
 class HeightPicker extends StatelessWidget {
@@ -13,22 +16,22 @@ class HeightPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: tutorialElementsRadius(),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        padding: const EdgeInsets.symmetric(
+            horizontal: Insets.xs, vertical: Insets.s),
         child: Column(
           children: <Widget>[
-            Text(
+            AutoSizeText(
               "Height $height cm",
+              maxLines: 1,
               style: const TextStyle(
                   color: Colors.red, fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: Insets.s),
             Slider.adaptive(
               thumbColor: Colors.red,
               activeColor: Colors.red,

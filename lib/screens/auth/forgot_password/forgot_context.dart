@@ -3,6 +3,7 @@
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_button.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_email_text_field.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +29,7 @@ class ForgotContext extends StatelessWidget {
             children: [
               AuthEmailTextField(
                   onSaved: (newEmail) => _email = newEmail ?? ""),
-              const SizedBox(height: 8),
+              const SizedBox(height: Insets.xs),
               BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
                   if (state is SendingRefreshEmail) {

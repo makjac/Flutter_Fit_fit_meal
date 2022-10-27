@@ -5,6 +5,7 @@ import 'package:fit_fit_meal/screens/auth/Widgets/auth_button.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_email_text_field.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_loading_button.dart';
 import 'package:fit_fit_meal/screens/auth/Widgets/auth_title.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/validator.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_none.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +33,9 @@ class SignInContext extends StatelessWidget {
             children: [
               AuthEmailTextField(
                   onSaved: (newEmail) => _email = newEmail ?? ""),
-              const SizedBox(height: 8),
+              const SizedBox(height: Insets.xs),
               _passwordTextField(width),
-              const SizedBox(height: 8),
+              const SizedBox(height: Insets.xs),
               const SizedBox(height: 4),
               BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
@@ -96,7 +97,7 @@ class SignInContext extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: Insets.xs),
           TextButton(
             onPressed: () => context.go("/forgot_password"),
             style: TextButton.styleFrom(

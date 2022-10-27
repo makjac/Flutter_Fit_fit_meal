@@ -15,9 +15,6 @@ class MainPage extends StatelessWidget {
         shadowColor: Colors.transparent,
       ),
       backgroundColor: Colors.orange,
-      // body: Container(
-      //   decoration: homeGradientBacground(),
-      // ),
     );
   }
 }
