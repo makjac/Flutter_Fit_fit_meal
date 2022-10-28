@@ -1,3 +1,4 @@
+import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/first_tutorial_page/first_tutorial_apge.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/second_tutorial_page.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/third_tutorial_page/third_tutorial_page.dart';
@@ -13,13 +14,13 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
-  final double _bottomSheetHeight = 70;
+  UserModel user = UserModel(uid: "");
   final _pageController = PageController();
   bool isLastPage = false;
 
-  static const List<Widget> _pages = [
-    FirstTutorialPage(),
-    SecondTuorialPage(),
+  static final List<Widget> _pages = [
+    const FirstTutorialPage(),
+    const SecondTuorialPage(),
     ThirdTutorialPage(),
   ];
 
@@ -41,7 +42,7 @@ class _TutorialPageState extends State<TutorialPage> {
           onPageChanged: (pageNumber) => setState(() {
             isLastPage = pageNumber == _pages.length - 1;
           }),
-          children: const <Widget>[
+          children: <Widget>[
             ..._pages,
           ],
         ),

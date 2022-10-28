@@ -1,22 +1,48 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
 import 'package:fit_fit_meal/data/models/activity_item.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/third_tutorial_page/utils/activity_items.dart';
 import 'package:fit_fit_meal/screens/tutorial/utils/tutorial_elevated_button_decoration.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
 
+// ignore: must_be_immutable
 class ThirdTutorialPage extends StatefulWidget {
-  const ThirdTutorialPage({super.key});
+  ActivityItem? currentItem;
+  ThirdTutorialPage({
+    Key? key,
+    this.currentItem,
+  }) : super(key: key);
 
   @override
   State<ThirdTutorialPage> createState() => _ThirdTutorialPageState();
 }
 
 class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
-  ActivityItem? currentItem;
+  @override
+  void initState() {
+    try {
+      final item = ActivityItems.activities.firstWhere(
+          (activity) => activity.value == UserSharedPreferences.getUserPAL());
+      widget.currentItem = item;
+      // ignore: empty_catches
+    } catch (e) {}
+    super.initState();
+  }
+
+  @override
+  Future<void> dispose() async {
+    super.dispose();
+
+    if (widget.currentItem != null) {
+      await UserSharedPreferences.setUserPAL(widget.currentItem!.value);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +95,12 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
       );
 
   Widget _activityChoice(ActivityItem activity, double width) => Opacity(
-        opacity: currentItem == activity || currentItem == null ? 1.0 : 0.7,
+        opacity: widget.currentItem == activity || widget.currentItem == null
+            ? 1.0
+            : 0.7,
         child: ElevatedButton(
           onPressed: () => setState(
-            () => currentItem = activity,
+            () => widget.currentItem = activity,
           ),
           style: tutorialElevatedButtonDecoration(),
           child: Padding(

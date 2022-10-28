@@ -3,6 +3,7 @@ import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets
 import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/height_picekr.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/int_picker.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
+import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
@@ -21,6 +22,26 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
   int _height = 0;
   int _wheight = 0;
   int _age = 0;
+
+  @override
+  void initState() {
+    _gender = UserSharedPreferences.getUserGender();
+    _height = (UserSharedPreferences.getUserHeight() ?? 0).toInt();
+    _height = (UserSharedPreferences.getUserWeight() ?? 0).toInt();
+    _age = UserSharedPreferences.getUserAge() ?? 0;
+    super.initState();
+  }
+
+  @override
+  Future<void> dispose() async {
+    super.dispose();
+    if (_gender != null) {
+      await UserSharedPreferences.setUserGender(_gender ?? true);
+    }
+    await UserSharedPreferences.setUserHeight(_height.toDouble());
+    await UserSharedPreferences.setUserWeight(_wheight.toDouble());
+    await UserSharedPreferences.setUserAge(_age);
+  }
 
   @override
   Widget build(BuildContext context) {

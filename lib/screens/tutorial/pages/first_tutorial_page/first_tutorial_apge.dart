@@ -1,13 +1,37 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/scale.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
-class FirstTutorialPage extends StatelessWidget {
-  const FirstTutorialPage({super.key});
+class FirstTutorialPage extends StatefulWidget {
+  const FirstTutorialPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<FirstTutorialPage> createState() => _FirstTutorialPageState();
+}
+
+class _FirstTutorialPageState extends State<FirstTutorialPage> {
+  late TextEditingController _loginController;
+
+  @override
+  void initState() {
+    _loginController =
+        TextEditingController(text: UserSharedPreferences.getUserLogin());
+    super.initState();
+  }
+
+  @override
+  Future<void> dispose() async {
+    super.dispose();
+    await UserSharedPreferences.setUserLogin(_loginController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +133,7 @@ class FirstTutorialPage extends StatelessWidget {
       );
 
   Widget _nameTextField() => TextFormField(
+        controller: _loginController,
         cursorColor: Colors.white,
         style: const TextStyle(color: Colors.white),
         decoration: borderCross(
