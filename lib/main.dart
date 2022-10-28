@@ -56,7 +56,7 @@ class _FitFitMealState extends State<FitFitMeal> {
   final GoRouter _router = GoRouter(
     routes: <GoRoute>[
       GoRoute(
-        path: "/tutorial",
+        path: "/",
         builder: (context, state) => const WelcomePage(),
         routes: <GoRoute>[
           GoRoute(
@@ -77,7 +77,7 @@ class _FitFitMealState extends State<FitFitMeal> {
         routes: const <GoRoute>[],
       ),
       GoRoute(
-        path: "/",
+        path: "/tutorial",
         builder: (context, state) => const TutorialPage(),
       ),
     ],

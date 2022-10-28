@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
 class UserModel extends Equatable {
-  final String uid;
+  String uid;
   String? login;
   bool? gender;
   num? weight;
@@ -15,7 +15,7 @@ class UserModel extends Equatable {
   num? pal;
 
   UserModel({
-    required this.uid,
+    this.uid = "",
     this.login,
     this.gender,
     this.weight,

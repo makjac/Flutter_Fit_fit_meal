@@ -45,9 +45,20 @@ class UserRepository extends BaseUserRepository {
       UserSharedPreferences.setUserUID(user.uid);
       if (user.gender != null) {
         UserSharedPreferences.setUserGender(user.gender!);
+      }
+      if (user.login != null) {
+        UserSharedPreferences.setUserLogin(user.login!);
+      }
+      if (user.height != null) {
         UserSharedPreferences.setUserHeight(user.height!.toDouble());
+      }
+      if (user.weight != null) {
         UserSharedPreferences.setUserWeight(user.weight!.toDouble());
+      }
+      if (user.age != null) {
         UserSharedPreferences.setUserAge(user.age!.toInt());
+      }
+      if (user.pal != null) {
         UserSharedPreferences.setUserPAL(user.pal!.toDouble());
       }
     } catch (error) {

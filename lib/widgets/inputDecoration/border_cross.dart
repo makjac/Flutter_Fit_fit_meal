@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 
-InputDecoration borderCross(String hintText, Icon icon) => InputDecoration(
-      border: const OutlineInputBorder(
+InputDecoration borderCross(String hintText, Icon icon, [double? width]) =>
+    InputDecoration(
+      border: OutlineInputBorder(
         borderSide: BorderSide(
-          width: 2,
+          width: width ?? 2,
           color: Colors.white,
         ),
       ),
-      enabledBorder: const OutlineInputBorder(
+      enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          width: 2,
+          width: width ?? 2,
           color: Colors.white,
         ),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(5),
           bottomLeft: Radius.circular(20),
           topRight: Radius.circular(20),
           bottomRight: Radius.circular(5),
         ),
       ),
-      focusedBorder: const OutlineInputBorder(
+      focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          width: 2,
+          width: width ?? 2,
           color: Colors.white,
         ),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(5),
           bottomLeft: Radius.circular(20),
           topRight: Radius.circular(20),
