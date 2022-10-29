@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../../../utils/insets.dart';
+import '../../../../utils/insets.dart';
 
 class Bar extends StatelessWidget {
   final double value;
@@ -34,26 +34,24 @@ class Bar extends StatelessWidget {
                 color: inactiveColor ?? const Color.fromARGB(100, 244, 67, 54),
                 height: height,
                 width: width,
-                child: Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        flex: (100 * (1 - value)).toInt(),
-                        child: Container(),
-                      ),
-                      Expanded(
-                        flex: (100 * value).toInt(),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: activeColor ?? Colors.red,
-                            borderRadius: const BorderRadius.vertical(
-                              top: Radius.circular(10),
-                            ),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: (100 * (1 - value)).toInt(),
+                      child: Container(),
+                    ),
+                    Expanded(
+                      flex: (100 * value).toInt(),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: activeColor ?? Colors.red,
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(10),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

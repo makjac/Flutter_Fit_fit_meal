@@ -49,7 +49,10 @@ class _FitFitMealState extends State<FitFitMeal> {
       routerDelegate: _router.routerDelegate,
       routeInformationParser: _router.routeInformationParser,
       routeInformationProvider: _router.routeInformationProvider,
-      theme: ThemeData(fontFamily: 'Rubik'),
+      theme: ThemeData(
+        fontFamily: 'Rubik',
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
     );
   }
 
