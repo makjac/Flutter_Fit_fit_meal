@@ -5,11 +5,19 @@ import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   //final String? _login = UserSharedPreferences.getUserLogin();
   final bool? _gender = UserSharedPreferences.getUserGender();
 
-  ProfilePage({super.key});
+  final TextEditingController _loginController =
+      TextEditingController(text: UserSharedPreferences.getUserLogin());
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +62,7 @@ class ProfilePage extends StatelessWidget {
           Expanded(
             child: TextFormField(
               //todo: add init login
-              controller: TextEditingController()
-                ..text = UserSharedPreferences.getUserLogin() ?? "",
+              controller: _loginController,
               decoration: borderCross(
                 "Your name (optional)",
                 const Icon(

@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
       case MenuElements.scanProduct:
         return const ScanerPage();
       case MenuElements.profile:
-        return ProfilePage();
+        return const ProfilePage();
     }
     return const MainPage();
   }
