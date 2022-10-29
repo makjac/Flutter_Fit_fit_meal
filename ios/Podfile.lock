@@ -607,6 +607,8 @@ PODS:
     - firebase_core
     - Flutter
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - fast_barcode_scanner (0.0.1):
+    - Flutter
   - Firebase/Auth (10.0.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.0.0)
@@ -732,6 +734,7 @@ PODS:
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - fast_barcode_scanner (from `.symlinks/plugins/fast_barcode_scanner/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
@@ -758,6 +761,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  fast_barcode_scanner:
+    :path: ".symlinks/plugins/fast_barcode_scanner/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -771,6 +776,7 @@ SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   cloud_firestore: 241c2ccedd0e927deadff0fac8b7d28cf9d351de
+  fast_barcode_scanner: 0df01447443e9f9c7a6859844d8c4719887100b4
   Firebase: 1b810f3d0c0532e27a48f1961f8c0400a668a2cf
   firebase_auth: 62015b6cbfccf40521d7f777c804d19f9bc6f922
   firebase_core: 9f457751caed72a30d23be90eb72de6ccbd1f9b0
