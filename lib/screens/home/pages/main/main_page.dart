@@ -32,6 +32,7 @@ class MainPage extends StatelessWidget {
                 leading: MenuWidget(),
                 backgroundColor: Colors.orange,
                 shadowColor: Colors.transparent,
+                floating: true,
               ),
               SliverToBoxAdapter(
                 child: Padding(

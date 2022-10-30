@@ -23,6 +23,7 @@ class WeeklyDetails extends StatelessWidget {
               centerTitle: true,
               backgroundColor: Colors.orange,
               shadowColor: Colors.transparent,
+              floating: true,
             ),
             SliverToBoxAdapter(
               child: Padding(

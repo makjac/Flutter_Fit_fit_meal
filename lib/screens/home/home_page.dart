@@ -1,7 +1,7 @@
 import 'package:fit_fit_meal/data/models/menu_item.dart';
 import 'package:fit_fit_meal/screens/home/pages/main/main_page.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/profile_page.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner/scaner_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/scaner_home_page.dart';
 import 'package:fit_fit_meal/screens/home/menu/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       case MenuElements.main:
         return const MainPage();
       case MenuElements.scanProduct:
-        return const ScanerPage();
+        return const ScanerHomePage();
       case MenuElements.profile:
         return const ProfilePage();
     }
