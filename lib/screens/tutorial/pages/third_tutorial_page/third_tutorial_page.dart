@@ -86,8 +86,8 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
 
   Widget _activityPicker(double width, int crossAxisCount) => GridView.count(
         crossAxisCount: crossAxisCount,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
+        mainAxisSpacing: Insets.xs,
+        crossAxisSpacing: Insets.xs,
         children: [
           ...ActivityItems.activities
               .map((activity) => _activityChoice(activity, width)),

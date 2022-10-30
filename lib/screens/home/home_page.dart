@@ -1,8 +1,8 @@
 import 'package:fit_fit_meal/data/models/menu_item.dart';
-import 'package:fit_fit_meal/screens/main/main_page.dart';
-import 'package:fit_fit_meal/screens/menu/menu_page.dart';
-import 'package:fit_fit_meal/screens/profile/profile_page.dart';
-import 'package:fit_fit_meal/screens/scaner/scaner_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/main/main_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/profile/profile_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner/scaner_page.dart';
+import 'package:fit_fit_meal/screens/home/menu/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/config.dart';

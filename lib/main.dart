@@ -5,6 +5,7 @@ import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dar
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
 import 'package:fit_fit_meal/screens/auth/signUp/sign_up_page.dart';
 import 'package:fit_fit_meal/screens/home/home_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/weekly_details/weekly_details.dart';
 import 'package:fit_fit_meal/screens/tutorial/tutorial_page.dart';
 import 'package:fit_fit_meal/screens/welcome/welcome_page.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
@@ -52,6 +53,7 @@ class _FitFitMealState extends State<FitFitMeal> {
       theme: ThemeData(
         fontFamily: 'Rubik',
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.red),
       ),
     );
   }
@@ -63,7 +65,9 @@ class _FitFitMealState extends State<FitFitMeal> {
         builder: (context, state) => const WelcomePage(),
         routes: <GoRoute>[
           GoRoute(
-              path: "signIn", builder: (context, state) => const LoginPage()),
+            path: "signIn",
+            builder: (context, state) => const LoginPage(),
+          ),
           GoRoute(
             path: "signUp",
             builder: (context, state) => const RegisterPage(),
@@ -77,7 +81,12 @@ class _FitFitMealState extends State<FitFitMeal> {
       GoRoute(
         path: "/home",
         builder: (context, state) => const HomePage(),
-        routes: const <GoRoute>[],
+        routes: <GoRoute>[
+          GoRoute(
+            path: "weekly_details",
+            builder: (context, state) => const WeeklyDetails(),
+          ),
+        ],
       ),
       GoRoute(
         path: "/tutorial",

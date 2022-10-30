@@ -1,13 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:fit_fit_meal/screens/main/widgets/bar_chart/bar_chart.dart';
-import 'package:fit_fit_meal/screens/main/widgets/bmi_chart/bmi_chart.dart';
-import 'package:fit_fit_meal/screens/main/widgets/labelled_data.dart';
+import 'package:fit_fit_meal/screens/home/pages/main/widgets/bar_chart/bar_chart.dart';
+import 'package:fit_fit_meal/screens/home/pages/main/widgets/bmi_chart/bmi_chart.dart';
+import 'package:fit_fit_meal/screens/home/pages/main/widgets/labelled_data.dart';
 import 'package:fit_fit_meal/utils/calorie_calculator.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/shadow_radius_all.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../utils/insets.dart';
+import '../../../../utils/insets.dart';
 
 List<double> data = [2230, 1968, 1000, 2777, 2000, 2150, 2333];
 List<String> days = ["M", "T", "W", "T", "F", "S", "S"];
@@ -20,47 +21,49 @@ class MainPage extends StatelessWidget {
     final orientation = MediaQuery.of(context).orientation;
     final userPPM = CalorieCalculator.calculatePPM();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Main"),
-        centerTitle: true,
-        leading: const MenuWidget(),
-        backgroundColor: Colors.orange,
-        shadowColor: Colors.transparent,
-      ),
       backgroundColor: Colors.orange,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: Insets.s,
-              right: Insets.s,
-              bottom: Insets.s,
-            ),
-            child: orientation == Orientation.portrait
-                ? _portraitView(userPPM)
-                : _landscapeView(userPPM),
+      body: SafeArea(
+        child: Center(
+          child: CustomScrollView(
+            slivers: [
+              const SliverAppBar(
+                title: Text("Main"),
+                centerTitle: true,
+                leading: MenuWidget(),
+                backgroundColor: Colors.orange,
+                shadowColor: Colors.transparent,
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(Insets.s),
+                  child: orientation == Orientation.portrait
+                      ? _portraitView(userPPM, context)
+                      : _landscapeView(userPPM, context),
+                ),
+              )
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget _landscapeView(double? userPPM) => Column(
+  Widget _landscapeView(double? userPPM, BuildContext context) => Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Expanded(child: _chart()),
+              Expanded(child: _chart(context)),
               const SizedBox(width: Insets.s),
               Expanded(
                 child: SizedBox(
-                  height: 300,
+                  height: 350,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      _ppm(userPPM, 140),
-                      _cpm(userPPM, 140),
+                      _ppm(userPPM, 160),
+                      _cpm(userPPM, 160),
                     ],
                   ),
                 ),
@@ -72,9 +75,9 @@ class MainPage extends StatelessWidget {
         ],
       );
 
-  Widget _portraitView(double? userPPM) => Column(
+  Widget _portraitView(double? userPPM, BuildContext context) => Column(
         children: <Widget>[
-          _chart(),
+          _chart(context),
           const SizedBox(height: Insets.s),
           _ppm(userPPM),
           const SizedBox(height: Insets.s),
@@ -84,11 +87,11 @@ class MainPage extends StatelessWidget {
         ],
       );
 
-  Widget _chart() => BarChart(
+  Widget _chart(BuildContext context) => BarChart(
         data: data,
         labels: days,
         enableLabels: true,
-        height: 300,
+        height: 350,
         title: const Padding(
           padding: EdgeInsets.symmetric(horizontal: Insets.xs),
           child: AutoSizeText(
@@ -113,6 +116,7 @@ class MainPage extends StatelessWidget {
             ),
           ),
         ),
+        footer: _chartFotter(context),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -129,6 +133,40 @@ class MainPage extends StatelessWidget {
                 offset: Offset(3, 3)),
           ],
         ),
+      );
+
+  Widget _chartFotter(BuildContext context) => Column(
+        children: <Widget>[
+          const Divider(
+            color: Color.fromARGB(100, 244, 67, 54),
+            indent: Insets.s,
+            endIndent: Insets.s,
+            thickness: 0.7,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Insets.xs),
+            child: ElevatedButton(
+              onPressed: () => context.go("/home/weekly_details"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Text("See more"),
+                  Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    size: 20,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       );
 
   Widget _ppm(double? userPPM, [double? height]) => SizedBox(

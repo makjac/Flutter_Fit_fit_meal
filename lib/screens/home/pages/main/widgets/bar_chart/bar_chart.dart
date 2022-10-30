@@ -12,6 +12,8 @@ class BarChart extends StatelessWidget {
   final List<String>? labels;
   final bool enableLabels;
   final Decoration? decoration;
+  final Color? activeColor;
+  final Color? inactiveColor;
   final double? height;
   final double? width;
   final Widget? title;
@@ -23,6 +25,8 @@ class BarChart extends StatelessWidget {
     this.labels,
     this.enableLabels = false,
     this.decoration,
+    this.activeColor,
+    this.inactiveColor,
     this.height,
     this.width,
     this.title,
@@ -64,6 +68,8 @@ class BarChart extends StatelessWidget {
                 (value) => Expanded(
                   child: Bar(
                     value: _calculateValue(data, value),
+                    activeColor: activeColor,
+                    inactiveColor: inactiveColor,
                     label: labels?.length == data.length && enableLabels
                         ? Text(
                             labels![labelIndex++],
