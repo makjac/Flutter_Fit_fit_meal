@@ -12,61 +12,65 @@ class ScanerHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.orange,
-      appBar: AppBar(
-        leading: const MenuWidget(),
-        backgroundColor: Colors.orange,
-        shadowColor: Colors.transparent,
-      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(Insets.s),
-          child: orientation == Orientation.portrait
-              ? _portraitView()
-              : _landscapeView(),
+        child: CustomScrollView(
+          slivers: [
+            const SliverAppBar(
+              leading: MenuWidget(),
+              backgroundColor: Colors.orange,
+              shadowColor: Colors.transparent,
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(Insets.s),
+                child: orientation == Orientation.portrait
+                    ? _portraitView(size)
+                    : _landscapeView(size),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _portraitView() => Column(
+  Widget _portraitView(Size size) => Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Expanded(flex: 3, child: _lottieCircle()),
-          Expanded(
-            child: Center(
-              child: _title(),
-            ),
+          SizedBox(height: size.height / 30),
+          SizedBox(height: size.width / 2, child: _lottieCircle()),
+          SizedBox(height: size.height / 20),
+          SizedBox(width: size.width / 1.5, child: _title()),
+          SizedBox(height: size.height / 7),
+          //const Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Insets.s),
+            child: _content(),
           ),
-          const Spacer(),
-          Expanded(flex: 3, child: _content()),
         ],
       );
 
-  Widget _landscapeView() => Row(
+  Widget _landscapeView(Size size) => Row(
         children: <Widget>[
           Expanded(
-            flex: 5,
+            flex: 11,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(flex: 3, child: _lottieCircle()),
-                Expanded(
-                  child: _title(),
-                ),
-                const Spacer(),
+                SizedBox(height: size.height / 2.3, child: _lottieCircle()),
+                const SizedBox(height: Insets.s),
+                _title(),
               ],
             ),
           ),
-          Expanded(
-            flex: 6,
-            child: Column(
-              children: [
-                const Expanded(child: SizedBox()),
-                _content(),
-                const Expanded(flex: 2, child: SizedBox()),
-              ],
-            ),
+          const Spacer(
+            flex: 2,
           ),
+          Expanded(flex: 12, child: _content()),
+          const Spacer(),
         ],
       );
 
