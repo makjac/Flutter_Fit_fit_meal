@@ -41,7 +41,7 @@ class MainPage extends StatelessWidget {
                       ? _portraitView(userPPM, context)
                       : _landscapeView(userPPM, context),
                 ),
-              )
+              ),
             ],
           ),
         ),

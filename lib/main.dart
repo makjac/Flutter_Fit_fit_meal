@@ -13,6 +13,7 @@ import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +22,8 @@ Future main() async {
   );
 
   await UserSharedPreferences.init();
+
+  await MobileAds.instance.initialize();
 
   runApp(
     MultiBlocProvider(

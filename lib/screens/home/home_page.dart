@@ -3,11 +3,13 @@ import 'package:fit_fit_meal/screens/home/pages/main/main_page.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/profile_page.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/scaner_home_page.dart';
 import 'package:fit_fit_meal/screens/home/menu/menu_page.dart';
+import 'package:fit_fit_meal/service/ad_mob_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../bloc/auth/auth_bloc.dart';
 import '../../widgets/snackBar/error_snack_bar.dart';
@@ -20,6 +22,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  BannerAd? _bannerAd;
+  bool _adIsLoaded = false;
+
+  Future<void> _initBannerAd() async {
+    _bannerAd = BannerAd(
+      size: AdSize.fullBanner,
+      adUnitId: AdMobService.bannerAdUnitId!,
+      listener: BannerAdListener(
+        onAdOpened: (_) => setState(() {
+          _adIsLoaded = true;
+        }),
+      ),
+      request: const AdRequest(),
+    )..load();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _initBannerAd();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
+
   MenuElement currentElement = MenuElements.main;
   @override
   Widget build(BuildContext context) {
@@ -32,29 +63,39 @@ class _HomePageState extends State<HomePage> {
           showErrorSnackBar(state.error, context);
         }
       },
-      child: ZoomDrawer(
-        menuScreen: Builder(
-          builder: (context) => MenuPage(
-            currentElement: currentElement,
-            onSelectedElement: (element) {
-              setState(() {
-                currentElement = element;
-                ZoomDrawer.of(context)?.close();
-              });
-            },
+      child: Scaffold(
+        body: ZoomDrawer(
+          menuScreen: Builder(
+            builder: (context) => MenuPage(
+              currentElement: currentElement,
+              onSelectedElement: (element) {
+                setState(() {
+                  currentElement = element;
+                  ZoomDrawer.of(context)?.close();
+                });
+              },
+            ),
           ),
+          mainScreen: _getScreen(),
+          menuBackgroundColor: Colors.red,
+          showShadow: true,
+          angle: -5,
+          mainScreenScale: 0,
+          borderRadius: 20,
+          style: DrawerStyle.style3,
+          slideWidth: MediaQuery.of(context).size.width * 0.7,
+          mainScreenTapClose: true,
+          menuScreenWidth: MediaQuery.of(context).size.width,
+          duration: const Duration(milliseconds: 300),
         ),
-        mainScreen: _getScreen(),
-        menuBackgroundColor: Colors.red,
-        showShadow: true,
-        angle: -5,
-        mainScreenScale: 0,
-        borderRadius: 20,
-        style: DrawerStyle.style3,
-        slideWidth: MediaQuery.of(context).size.width * 0.7,
-        mainScreenTapClose: true,
-        menuScreenWidth: MediaQuery.of(context).size.width,
-        duration: const Duration(milliseconds: 300),
+        bottomNavigationBar: _bannerAd != null
+            ? SizedBox(
+                height: _bannerAd!.size.height.toDouble(),
+                child: AdWidget(
+                  ad: _bannerAd!,
+                ),
+              )
+            : null,
       ),
     );
   }
