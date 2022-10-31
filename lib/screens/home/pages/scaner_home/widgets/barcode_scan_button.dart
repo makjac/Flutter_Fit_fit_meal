@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../utils/insets.dart';
 
@@ -10,7 +11,7 @@ class BarcodeScanButton extends StatelessWidget {
     return SizedBox(
       height: 45,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => context.go('/home/scaner'),
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white,
             foregroundColor: Colors.red,
