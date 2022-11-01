@@ -23,17 +23,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BannerAd? _bannerAd;
-  bool _adIsLoaded = false;
 
   Future<void> _initBannerAd() async {
     _bannerAd = BannerAd(
       size: AdSize.fullBanner,
       adUnitId: AdMobService.bannerAdUnitId!,
-      listener: BannerAdListener(
-        onAdOpened: (_) => setState(() {
-          _adIsLoaded = true;
-        }),
-      ),
+      listener: AdMobService.bannerListener,
       request: const AdRequest(),
     )..load();
   }

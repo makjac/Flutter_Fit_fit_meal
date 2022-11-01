@@ -44,7 +44,7 @@ class ScanerHomePage extends StatelessWidget {
           SizedBox(height: size.width / 2, child: _lottieCircle()),
           SizedBox(height: size.height / 20),
           SizedBox(width: size.width / 1.5, child: _title()),
-          SizedBox(height: size.height / 7),
+          SizedBox(height: size.height / 15),
           //const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Insets.s),

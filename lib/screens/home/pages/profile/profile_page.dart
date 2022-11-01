@@ -1,4 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/widgets/avatar.dart';
+import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_default_title.dart';
+import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_label.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
@@ -13,7 +16,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  //final String? _login = UserSharedPreferences.getUserLogin();
   final bool? _gender = UserSharedPreferences.getUserGender();
 
   final TextEditingController _loginController =
@@ -28,9 +30,10 @@ class _ProfilePageState extends State<ProfilePage> {
           const SliverAppBar(
             title: Text("Profile"),
             centerTitle: true,
+            floating: true,
             leading: MenuWidget(),
             shadowColor: Colors.transparent,
-            backgroundColor: Colors.orange,
+            backgroundColor: Colors.transparent,
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -38,10 +41,55 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: <Widget>[
                   _loginField(),
+                  const SizedBox(height: Insets.m),
+                  const ProfileLabel(
+                    title: ProfileDefaultTitle(title: "Gender"),
+                    body: AutoSizeText("male"),
+                    icon: Icon(
+                      Icons.person,
+                      size: 35,
+                    ),
+                  ),
+                  const SizedBox(height: Insets.s),
+                  const ProfileLabel(
+                    title: ProfileDefaultTitle(title: "Age"),
+                    body: AutoSizeText("22"),
+                    icon: Icon(
+                      Icons.calendar_month,
+                      size: 35,
+                    ),
+                  ),
+                  const SizedBox(height: Insets.s),
+                  const ProfileLabel(
+                    title: ProfileDefaultTitle(title: "Height"),
+                    body: AutoSizeText("195"),
+                    icon: Icon(
+                      Icons.height_rounded,
+                      size: 35,
+                    ),
+                  ),
+                  const SizedBox(height: Insets.s),
+                  const ProfileLabel(
+                    title: ProfileDefaultTitle(title: "Weight"),
+                    body: AutoSizeText("83"),
+                    icon: Icon(
+                      Icons.monitor_weight_rounded,
+                      size: 35,
+                    ),
+                  ),
+                  const SizedBox(height: Insets.s),
+                  const ProfileLabel(
+                    title: ProfileDefaultTitle(title: "Activity"),
+                    body: AutoSizeText("Active"),
+                    icon: Icon(
+                      Icons.sports_basketball,
+                      size: 35,
+                    ),
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -65,7 +113,6 @@ class _ProfilePageState extends State<ProfilePage> {
           Avatar(lottiePath: _lottePath()),
           Expanded(
             child: TextFormField(
-              //todo: add init login
               controller: _loginController,
               decoration: borderCross(
                 "Your name (optional)",

@@ -6,13 +6,13 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 class AdMobService {
   static String? get bannerAdUnitId {
     return "ca-app-pub-3940256099942544/6300978111";
-    if (Platform.isAndroid) {
-      return "ca-app-pub-5166777989324584/3029929031";
-    }
-    if (Platform.isIOS) {
-      return "ca-app-pub-5166777989324584/7779429500";
-    }
-    return null;
+    // if (Platform.isAndroid) {
+    //   return "ca-app-pub-5166777989324584/3029929031";
+    // }
+    // if (Platform.isIOS) {
+    //   return "ca-app-pub-5166777989324584/7779429500";
+    // }
+    // return null;
   }
 
   static String? get interstitialAdUnitId {

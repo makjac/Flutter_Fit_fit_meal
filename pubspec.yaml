@@ -49,12 +49,14 @@ dependencies:
   lottie: ^1.4.3
   auto_size_text: ^3.0.0
   fast_barcode_scanner: ^1.1.4
-  profanity_filter: ^2.0.0
   google_mobile_ads: ^2.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+    
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -63,6 +65,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+
+    
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
