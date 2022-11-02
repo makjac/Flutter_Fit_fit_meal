@@ -26,8 +26,8 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
   @override
   void initState() {
     _gender = UserSharedPreferences.getUserGender();
-    _height = (UserSharedPreferences.getUserHeight() ?? 0).toInt();
-    _height = (UserSharedPreferences.getUserWeight() ?? 0).toInt();
+    _height = UserSharedPreferences.getUserHeight()?.toInt() ?? 0;
+    _height = UserSharedPreferences.getUserWeight()?.toInt() ?? 0;
     _age = UserSharedPreferences.getUserAge() ?? 0;
     super.initState();
   }

@@ -51,6 +51,13 @@ dependencies:
   fast_barcode_scanner: ^1.1.4
   google_mobile_ads: ^2.2.0
 
+
+google_mobile_ads:
+    git:
+      url: https://github.com/SuaMusica/googleads-mobile-flutter.git
+      path: packages/google_mobile_ads
+      ref: feature/suamusica
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

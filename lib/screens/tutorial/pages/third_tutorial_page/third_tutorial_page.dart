@@ -2,14 +2,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 import 'package:fit_fit_meal/data/models/activity_item.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/third_tutorial_page/utils/activity_items.dart';
-import 'package:fit_fit_meal/screens/tutorial/utils/tutorial_elevated_button_decoration.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 
 import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
+import '../../../../widgets/buttons/activity_choice_button.dart';
 
 // ignore: must_be_immutable
 class ThirdTutorialPage extends StatefulWidget {
@@ -46,7 +45,6 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final orientation = MediaQuery.of(context).orientation;
 
     return Scaffold(
@@ -66,7 +64,7 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
                 Expanded(
                   flex: 10,
                   child: _activityPicker(
-                      width, orientation == Orientation.portrait ? 2 : 4),
+                      orientation == Orientation.portrait ? 2 : 4),
                 ),
                 const Spacer(),
               ],
@@ -84,45 +82,22 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
             color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
       );
 
-  Widget _activityPicker(double width, int crossAxisCount) => GridView.count(
+  Widget _activityPicker(int crossAxisCount) => GridView.count(
         crossAxisCount: crossAxisCount,
         mainAxisSpacing: Insets.xs,
         crossAxisSpacing: Insets.xs,
         children: [
-          ...ActivityItems.activities
-              .map((activity) => _activityChoice(activity, width)),
+          ...ActivityItems.activities.map((activity) => Opacity(
+                opacity:
+                    widget.currentItem == activity || widget.currentItem == null
+                        ? 1.0
+                        : 0.7,
+                child: ActivityChoiceButton(
+                    activity: activity,
+                    onPicked: (item) => setState(() {
+                          widget.currentItem = item;
+                        })),
+              )),
         ],
-      );
-
-  Widget _activityChoice(ActivityItem activity, double width) => Opacity(
-        opacity: widget.currentItem == activity || widget.currentItem == null
-            ? 1.0
-            : 0.7,
-        child: ElevatedButton(
-          onPressed: () => setState(
-            () => widget.currentItem = activity,
-          ),
-          style: tutorialElevatedButtonDecoration(),
-          child: Padding(
-            padding: const EdgeInsets.all(Insets.xs),
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                    flex: 3, child: LottieBuilder.asset(activity.lottiePath)),
-                const SizedBox(height: Insets.xs),
-                Expanded(
-                  child: AutoSizeText(
-                    activity.label,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 25),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       );
 }

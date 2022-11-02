@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:fit_fit_meal/screens/tutorial/utils/tutorial_elevated_button_decoration.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
+
+import '../../../utils/tutorial_elevated_button_decoration.dart';
 
 class GenderPicker extends StatelessWidget {
   final bool? gender;

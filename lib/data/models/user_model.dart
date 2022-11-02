@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 
 // ignore: must_be_immutable
 class UserModel extends Equatable {
@@ -40,6 +41,16 @@ class UserModel extends Equatable {
             : 0,
         age: snap.data().toString().contains('age') ? snap['age'] as num? : 0,
         pal: snap.data().toString().contains('pal') ? snap['pal'] as num? : 0,
+      );
+
+  static UserModel fromSharedPreferences() => UserModel(
+        uid: UserSharedPreferences.getUserUID() ?? "",
+        login: UserSharedPreferences.getUserLogin(),
+        gender: UserSharedPreferences.getUserGender(),
+        weight: UserSharedPreferences.getUserWeight(),
+        height: UserSharedPreferences.getUserHeight(),
+        age: UserSharedPreferences.getUserAge(),
+        pal: UserSharedPreferences.getUserPAL(),
       );
 
   Map<String, dynamic> toMap() {

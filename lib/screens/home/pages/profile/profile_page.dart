@@ -1,12 +1,17 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/widgets/avatar.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_default_title.dart';
+import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_gender_picker.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_label.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../widgets/buttons/activity_choice_button.dart';
+import '../../../tutorial/pages/third_tutorial_page/utils/activity_items.dart';
+import 'widgets/scroll_wheel_int_picker.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,7 +21,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final bool? _gender = UserSharedPreferences.getUserGender();
+  UserModel user = UserModel.fromSharedPreferences();
 
   final TextEditingController _loginController =
       TextEditingController(text: UserSharedPreferences.getUserLogin());
@@ -25,6 +30,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange,
+      floatingActionButton: _isChange()
+          ? FloatingActionButton.extended(
+              onPressed: () {},
+              label: const Text("Save"),
+              icon: const Icon(Icons.save),
+            )
+          : null,
       body: CustomScrollView(
         slivers: [
           const SliverAppBar(
@@ -42,50 +54,24 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: <Widget>[
                   _loginField(),
                   const SizedBox(height: Insets.m),
-                  const ProfileLabel(
-                    title: ProfileDefaultTitle(title: "Gender"),
-                    body: AutoSizeText("male"),
-                    icon: Icon(
-                      Icons.person,
-                      size: 35,
-                    ),
-                  ),
+                  _genderPicker(),
                   const SizedBox(height: Insets.s),
-                  const ProfileLabel(
-                    title: ProfileDefaultTitle(title: "Age"),
-                    body: AutoSizeText("22"),
-                    icon: Icon(
-                      Icons.calendar_month,
-                      size: 35,
-                    ),
-                  ),
+                  _agePicke(),
                   const SizedBox(height: Insets.s),
-                  const ProfileLabel(
-                    title: ProfileDefaultTitle(title: "Height"),
-                    body: AutoSizeText("195"),
-                    icon: Icon(
-                      Icons.height_rounded,
-                      size: 35,
-                    ),
-                  ),
+                  _weightPicke(),
                   const SizedBox(height: Insets.s),
-                  const ProfileLabel(
-                    title: ProfileDefaultTitle(title: "Weight"),
-                    body: AutoSizeText("83"),
-                    icon: Icon(
-                      Icons.monitor_weight_rounded,
-                      size: 35,
-                    ),
-                  ),
+                  _heightPicke(),
                   const SizedBox(height: Insets.s),
-                  const ProfileLabel(
-                    title: ProfileDefaultTitle(title: "Activity"),
-                    body: AutoSizeText("Active"),
-                    icon: Icon(
+                  //todo : repair gridview
+                  ProfileLabel(
+                    title: const ProfileDefaultTitle(title: "Activity"),
+                    body: SizedBox(height: 360, child: _activityPicker(2)),
+                    icon: const Icon(
                       Icons.sports_basketball,
                       size: 35,
                     ),
                   ),
+                  SizedBox(height: _isChange() ? 60 : 0),
                 ],
               ),
             ),
@@ -96,8 +82,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   String _lottePath() {
-    if (_gender != null) {
-      if (_gender!) {
+    bool? gender = UserSharedPreferences.getUserGender();
+    if (gender != null) {
+      if (gender) {
         //male avatar
         return 'assets/lottie/male.json';
       }
@@ -122,10 +109,98 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 3,
               ),
+              onChanged: (value) => setState(() {
+                user.login = value;
+              }),
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),
             ),
           ),
         ],
       );
+
+  Widget _genderPicker() => ProfileLabel(
+        title: const ProfileDefaultTitle(title: "Gender"),
+        isDivider: true,
+        body: ProfileGenderPicker(
+            gender: user.gender,
+            onChange: (value) => setState(() {
+                  user.gender = value;
+                })),
+        icon: const Icon(
+          Icons.person,
+          size: 35,
+        ),
+      );
+
+  Widget _agePicke() => ProfileLabel(
+        title: const ProfileDefaultTitle(title: "Age"),
+        body: ScrollWheelIntPicker(
+          initValue: user.age?.toInt(),
+          onSelected: (value) => setState(() {
+            user.age = value;
+          }),
+        ),
+        icon: const Icon(
+          Icons.calendar_month,
+          size: 35,
+        ),
+      );
+
+  Widget _heightPicke() => ProfileLabel(
+        title: const ProfileDefaultTitle(title: "Height"),
+        body: ScrollWheelIntPicker(
+          initValue: user.height?.toInt(),
+          maxValue: 260,
+          onSelected: (value) => setState(() {
+            user.height = value;
+          }),
+        ),
+        icon: const Icon(
+          Icons.height,
+          size: 35,
+        ),
+      );
+
+  Widget _weightPicke() => ProfileLabel(
+        title: const ProfileDefaultTitle(title: "Weight"),
+        body: ScrollWheelIntPicker(
+          initValue: user.weight?.toInt(),
+          maxValue: 250,
+          onSelected: (value) => setState(() {
+            user.weight = value;
+          }),
+        ),
+        icon: const Icon(
+          Icons.monitor_weight,
+          size: 35,
+        ),
+      );
+
+  Widget _activityPicker(int crossAxisCount) => GridView.count(
+        crossAxisCount: crossAxisCount,
+        mainAxisSpacing: Insets.xs,
+        crossAxisSpacing: Insets.xs,
+        shrinkWrap: true,
+        children: [
+          ...ActivityItems.activities.map((activity) => Opacity(
+                opacity: user.pal?.toDouble() == activity.value ? 1.0 : 0.5,
+                child: ActivityChoiceButton(
+                    activity: activity,
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                    onPicked: (item) => setState(() {
+                          user.pal = item.value;
+                        })),
+              )),
+        ],
+      );
+
+  bool _isChange() =>
+      user.login != UserSharedPreferences.getUserLogin() ||
+      user.gender != UserSharedPreferences.getUserGender() ||
+      user.age?.toInt() != UserSharedPreferences.getUserAge() ||
+      user.height?.toDouble() != UserSharedPreferences.getUserHeight() ||
+      user.weight?.toDouble() != UserSharedPreferences.getUserWeight() ||
+      user.pal?.toDouble() != UserSharedPreferences.getUserPAL();
 }

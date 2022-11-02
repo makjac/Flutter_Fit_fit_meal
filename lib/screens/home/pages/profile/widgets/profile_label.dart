@@ -7,11 +7,13 @@ class ProfileLabel extends StatelessWidget {
   final Widget title;
   final Widget body;
   final Widget icon;
+  final bool isDivider;
   const ProfileLabel({
     Key? key,
     required this.title,
     required this.body,
     required this.icon,
+    this.isDivider = false,
   }) : super(key: key);
 
   @override
@@ -51,7 +53,9 @@ class ProfileLabel extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Center(child: title),
-              const Divider(),
+              isDivider
+                  ? const Divider(color: Colors.transparent)
+                  : const SizedBox(),
               body,
             ],
           ),
