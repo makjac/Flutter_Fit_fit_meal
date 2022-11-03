@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
+import 'package:fit_fit_meal/bloc/product/product_bloc.dart';
 import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/firebase_options.dart';
 import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
@@ -25,7 +26,7 @@ Future main() async {
 
   await UserSharedPreferences.init();
 
-  await MobileAds.instance.initialize();
+  MobileAds.instance.initialize();
 
   runApp(
     MultiBlocProvider(
@@ -34,6 +35,7 @@ Future main() async {
           create: (context) => AuthBloc()..add(CheckUser()),
         ),
         BlocProvider<UserBloc>(create: (context) => UserBloc()),
+        BlocProvider<ProductBloc>(create: (context) => ProductBloc()),
       ],
       child: const FitFitMeal(),
     ),

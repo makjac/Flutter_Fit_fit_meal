@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:fit_fit_meal/data/controllers/user_controller.dart';
 import 'package:fit_fit_meal/data/models/user_model.dart';
+
+import '../../data/controllers/user/user_controller.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
