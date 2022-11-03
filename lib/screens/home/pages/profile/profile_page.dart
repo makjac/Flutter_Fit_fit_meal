@@ -1,3 +1,4 @@
+import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/widgets/avatar.dart';
 import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_default_title.dart';
@@ -8,6 +9,7 @@ import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../widgets/buttons/activity_choice_button.dart';
 import '../../../tutorial/pages/third_tutorial_page/utils/activity_items.dart';
@@ -28,13 +30,29 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       backgroundColor: Colors.orange,
       floatingActionButton: _isChange()
           ? FloatingActionButton.extended(
-              onPressed: () {},
+              onPressed: () => BlocProvider.of<UserBloc>(context)
+                  .add(UpdateUserData(user: user)),
               label: const Text("Save"),
-              icon: const Icon(Icons.save),
+              icon: BlocConsumer<UserBloc, UserState>(
+                builder: (context, state) {
+                  if (state is UpdatingUserData) {
+                    return const CircularProgressIndicator(
+                      color: Colors.white,
+                    );
+                  }
+                  return const Icon(Icons.save);
+                },
+                listener: (context, state) {
+                  if (state is UserDataUpdated) {
+                    setState(() {});
+                  }
+                },
+              ),
             )
           : null,
       body: CustomScrollView(
@@ -50,36 +68,78 @@ class _ProfilePageState extends State<ProfilePage> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(Insets.s),
-              child: Column(
-                children: <Widget>[
-                  _loginField(),
-                  const SizedBox(height: Insets.m),
-                  _genderPicker(),
-                  const SizedBox(height: Insets.s),
-                  _agePicke(),
-                  const SizedBox(height: Insets.s),
-                  _weightPicke(),
-                  const SizedBox(height: Insets.s),
-                  _heightPicke(),
-                  const SizedBox(height: Insets.s),
-                  //todo : repair gridview
-                  ProfileLabel(
-                    title: const ProfileDefaultTitle(title: "Activity"),
-                    body: SizedBox(height: 360, child: _activityPicker(2)),
-                    icon: const Icon(
-                      Icons.sports_basketball,
-                      size: 35,
-                    ),
-                  ),
-                  SizedBox(height: _isChange() ? 60 : 0),
-                ],
-              ),
+              child: orientation == Orientation.portrait
+                  ? _portraitView()
+                  : _landscapeView(),
             ),
           ),
         ],
       ),
     );
   }
+
+  Widget _portraitView() => Column(
+        children: <Widget>[
+          _loginField(),
+          const SizedBox(height: Insets.m),
+          _genderPicker(),
+          const SizedBox(height: Insets.s),
+          _agePicke(),
+          const SizedBox(height: Insets.s),
+          _weightPicke(),
+          const SizedBox(height: Insets.s),
+          _heightPicke(),
+          const SizedBox(height: Insets.s),
+          ProfileLabel(
+            title: const ProfileDefaultTitle(title: "Activity"),
+            body: _activityPicker(2),
+            icon: const Icon(
+              Icons.sports_basketball,
+              size: 35,
+            ),
+          ),
+          SizedBox(height: _isChange() ? 60 : 0),
+        ],
+      );
+
+  Widget _landscapeView() => Column(
+        children: <Widget>[
+          _loginField(),
+          const SizedBox(height: Insets.m),
+          Row(
+            children: <Widget>[
+              Expanded(
+                flex: 8,
+                child: Column(
+                  children: <Widget>[
+                    _genderPicker(),
+                    const SizedBox(height: Insets.s),
+                    _agePicke(),
+                    const SizedBox(height: Insets.s),
+                    _weightPicke(),
+                    const SizedBox(height: Insets.s),
+                    _heightPicke(),
+                    const SizedBox(height: Insets.s),
+                  ],
+                ),
+              ),
+              const SizedBox(width: Insets.s),
+              Expanded(
+                flex: 3,
+                child: ProfileLabel(
+                  title: const ProfileDefaultTitle(title: "Activity"),
+                  body: _activityPicker(1),
+                  icon: const Icon(
+                    Icons.sports_basketball,
+                    size: 35,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: _isChange() ? 60 : 0),
+        ],
+      );
 
   String _lottePath() {
     bool? gender = UserSharedPreferences.getUserGender();
@@ -181,18 +241,24 @@ class _ProfilePageState extends State<ProfilePage> {
         crossAxisCount: crossAxisCount,
         mainAxisSpacing: Insets.xs,
         crossAxisSpacing: Insets.xs,
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: [
-          ...ActivityItems.activities.map((activity) => Opacity(
-                opacity: user.pal?.toDouble() == activity.value ? 1.0 : 0.5,
-                child: ActivityChoiceButton(
-                    activity: activity,
-                    backgroundColor: Colors.red,
-                    foregroundColor: Colors.white,
-                    onPicked: (item) => setState(() {
-                          user.pal = item.value;
-                        })),
-              )),
+          ...ActivityItems.activities.map(
+            (activity) => Opacity(
+              opacity: user.pal?.toDouble() == activity.value ? 1.0 : 0.5,
+              child: ActivityChoiceButton(
+                activity: activity,
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                onPicked: (item) => setState(
+                  () {
+                    user.pal = item.value;
+                  },
+                ),
+              ),
+            ),
+          ),
         ],
       );
 

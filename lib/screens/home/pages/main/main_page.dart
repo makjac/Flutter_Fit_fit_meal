@@ -22,6 +22,11 @@ class MainPage extends StatelessWidget {
     final userPPM = CalorieCalculator.calculatePPM();
     return Scaffold(
       backgroundColor: Colors.orange,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => context.go("/home/scaner"),
+        icon: const Icon(Icons.qr_code_scanner),
+        label: const Text("Scan product"),
+      ),
       body: SafeArea(
         child: Center(
           child: CustomScrollView(
@@ -36,7 +41,11 @@ class MainPage extends StatelessWidget {
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(Insets.s),
+                  padding: const EdgeInsets.only(
+                      bottom: 75,
+                      left: Insets.s,
+                      right: Insets.s,
+                      top: Insets.s),
                   child: orientation == Orientation.portrait
                       ? _portraitView(userPPM, context)
                       : _landscapeView(userPPM, context),

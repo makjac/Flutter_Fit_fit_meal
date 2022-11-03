@@ -1,4 +1,5 @@
 import 'package:fit_fit_meal/data/controllers/base_user_controller.dart';
+import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/data/repository/firbase/auth_repository.dart';
 import 'package:fit_fit_meal/data/repository/model_repository/user_repository/user_repository.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
@@ -62,6 +63,16 @@ class UserController extends BaseUserController {
   Future<void> resetUserPassword({required String email}) async {
     try {
       await _authRepository.resetPasswd(email: email);
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
+  Future<void> updateUserData({required UserModel user}) async {
+    try {
+      await _userRepository.updateUserData(user);
+      await _userRepository.saveUser(user);
     } catch (error) {
       throw Exception(error);
     }

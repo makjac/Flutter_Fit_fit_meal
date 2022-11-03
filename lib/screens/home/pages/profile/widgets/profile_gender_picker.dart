@@ -24,7 +24,7 @@ class ProfileGenderPicker extends StatelessWidget {
           topRight: Radius.circular(5),
         ),
         child: Container(
-          color: Colors.red.withOpacity(0.4),
+          color: Colors.red.withOpacity(0.5),
           child: Row(
             children: <Widget>[
               Expanded(
@@ -32,9 +32,7 @@ class ProfileGenderPicker extends StatelessWidget {
                 child: InkWell(
                   onTap: () => onChange(true),
                   child: Container(
-                    color: gender == true
-                        ? Colors.red
-                        : Colors.red.withOpacity(0.4),
+                    color: gender == true ? Colors.red : null,
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(
@@ -54,16 +52,16 @@ class ProfileGenderPicker extends StatelessWidget {
                       colors: gender == true
                           ? [
                               Colors.red,
-                              Colors.red.withOpacity(0.4),
+                              Colors.red.withOpacity(0),
                             ]
                           : gender == false
                               ? [
-                                  Colors.red.withOpacity(0.4),
+                                  Colors.red.withOpacity(0),
                                   Colors.red,
                                 ]
                               : [
-                                  Colors.red.withOpacity(0.4),
-                                  Colors.red.withOpacity(0.4),
+                                  Colors.red.withOpacity(0),
+                                  Colors.red.withOpacity(0),
                                 ],
                     ),
                   ),
@@ -74,9 +72,7 @@ class ProfileGenderPicker extends StatelessWidget {
                 child: InkWell(
                   onTap: () => onChange(false),
                   child: Container(
-                    color: gender == false
-                        ? Colors.red
-                        : Colors.red.withOpacity(0.4),
+                    color: gender == false ? Colors.red : null,
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(

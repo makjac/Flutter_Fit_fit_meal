@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
+import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/firebase_options.dart';
 import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
@@ -31,6 +32,7 @@ Future main() async {
         BlocProvider<AuthBloc>(
           create: (context) => AuthBloc()..add(CheckUser()),
         ),
+        BlocProvider<UserBloc>(create: (context) => UserBloc()),
       ],
       child: const FitFitMeal(),
     ),

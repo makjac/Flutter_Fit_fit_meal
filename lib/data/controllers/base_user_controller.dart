@@ -1,3 +1,5 @@
+import 'package:fit_fit_meal/data/models/user_model.dart';
+
 abstract class BaseUserController {
   bool checkUser();
 
@@ -8,4 +10,6 @@ abstract class BaseUserController {
   Future<void> signOutUser();
 
   Future<void> resetUserPassword({required String email});
+
+  Future<void> updateUserData({required UserModel user});
 }
