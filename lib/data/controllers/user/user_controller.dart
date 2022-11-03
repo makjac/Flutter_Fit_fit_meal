@@ -1,8 +1,9 @@
-import 'package:fit_fit_meal/data/controllers/base_user_controller.dart';
 import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/data/repository/firbase/auth_repository.dart';
 import 'package:fit_fit_meal/data/repository/model_repository/user_repository/user_repository.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
+
+import 'base_user_controller.dart';
 
 class UserController extends BaseUserController {
   final AuthRepository _authRepository;

@@ -96,10 +96,10 @@ class ScanerHomePage extends StatelessWidget {
       );
 
   Widget _content() => Column(
-        children: const [
+        children: [
           ProductSearchBar(),
-          SizedBox(height: Insets.xs),
-          BarcodeScanButton(),
+          const SizedBox(height: Insets.xs),
+          const BarcodeScanButton(),
         ],
       );
 }

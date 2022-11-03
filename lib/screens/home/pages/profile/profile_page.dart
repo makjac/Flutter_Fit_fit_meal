@@ -109,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Row(
             children: <Widget>[
               Expanded(
-                flex: 8,
+                flex: 7,
                 child: Column(
                   children: <Widget>[
                     _genderPicker(),

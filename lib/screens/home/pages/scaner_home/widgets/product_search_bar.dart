@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../utils/insets.dart';
 
 class ProductSearchBar extends StatelessWidget {
-  const ProductSearchBar({super.key});
+  final _formKey = GlobalKey<FormState>();
+  ProductSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,16 @@ class ProductSearchBar extends StatelessWidget {
                 horizontal: Insets.s,
               ),
               child: TextFormField(
+                key: _formKey,
                 cursorColor: Colors.white,
                 style: const TextStyle(color: Colors.white, fontSize: 17),
                 autocorrect: true,
+                validator: (value) {
+                  if (value == "") {
+                    return "field is null";
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: "Product name",
@@ -36,7 +45,12 @@ class ProductSearchBar extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              final isValid = _formKey.currentState?.validate();
+              if (isValid == true) {
+                context.go("/home/results");
+              }
+            },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: Insets.s),
               child: Icon(
