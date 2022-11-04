@@ -20,9 +20,8 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await UserSharedPreferences.init();
 

@@ -1,6 +1,8 @@
 import 'package:fast_barcode_scanner/fast_barcode_scanner.dart';
+import 'package:fit_fit_meal/bloc/product/product_bloc.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -24,6 +26,11 @@ class BarcodeScaner extends StatelessWidget {
         ],
         framerate: Framerate.fps240,
         resolution: Resolution.hd4k,
+        onScan: (barcode) {
+          BlocProvider.of<ProductBloc>(context)
+              .add(LoadProductsByBarcode(barcode: barcode.value));
+          context.go("/home/results");
+        },
         children: <Widget>[
           LottieBuilder.asset("assets/lottie/scanning.json"),
           Align(

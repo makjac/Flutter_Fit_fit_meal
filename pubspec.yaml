@@ -58,12 +58,7 @@ flutter_native_splash:
   color: "#ffffff"
 
 
-
-# google_mobile_ads:
-#     git:
-#       url: https://github.com/SuaMusica/googleads-mobile-flutter.git
-#       path: packages/google_mobile_ads
-#       ref: feature/suamusica
+  
 
 dev_dependencies:
   flutter_test:
