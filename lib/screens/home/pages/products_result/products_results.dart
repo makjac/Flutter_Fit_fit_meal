@@ -13,17 +13,19 @@ class ProductsResults extends StatelessWidget {
       ),
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
+          if (state is ProductsLoaded) {
+            return const Text("loaded");
+          }
           if (state is LoadingProducts) {
-            if (state is ProductsLoaded) {
-              const Text("loaded");
-            }
             return const Center(
               child: CircularProgressIndicator(
-                color: Colors.white,
+                color: Colors.red,
               ),
             );
           }
-          return const Text("something is wrong");
+          return const Center(
+            child: Text("something is wrong"),
+          );
         },
       ),
     );

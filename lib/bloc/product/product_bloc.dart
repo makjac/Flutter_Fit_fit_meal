@@ -23,11 +23,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       LoadProductByName event, Emitter<ProductState> emit) async {
     try {
       emit(LoadingProducts());
-      emit(
-        ProductsLoaded(
-          products: await _productController.loadProductByName(event.name),
-        ),
-      );
+      final results = await _productController.loadProductByName(event.name);
+      emit(ProductsLoaded(products: results));
     } catch (error) {
       emit(ProductsError(error: error.toString()));
     }
@@ -37,12 +34,9 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       LoadProductsByBarcode event, Emitter<ProductState> emit) async {
     try {
       emit(LoadingProducts());
-      emit(
-        ProductsLoaded(
-          products:
-              await _productController.loadProductByBarcode(event.barcode),
-        ),
-      );
+      final results =
+          await _productController.loadProductByBarcode(event.barcode);
+      emit(ProductsLoaded(products: results));
     } catch (error) {
       emit(ProductsError(error: error.toString()));
     }

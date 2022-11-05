@@ -19,7 +19,7 @@ class Product extends Equatable {
     required this.producer,
     required this.unit,
     required this.nutritionalLabelling,
-  });
+  }) : super();
 
   static Product fromSnapshot(DocumentSnapshot snap) => Product(
         barcode: snap['barcode'] as String,
@@ -59,11 +59,13 @@ class Product extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object?> get props => [
-        barcode,
-        name,
-        producer,
-        unit,
-        nutritionalLabelling,
-      ];
+  List<Object> get props {
+    return [
+      barcode,
+      name,
+      producer,
+      unit,
+      nutritionalLabelling,
+    ];
+  }
 }
