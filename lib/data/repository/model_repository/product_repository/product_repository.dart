@@ -25,8 +25,8 @@ class ProductRepository extends BaseProductRepository {
   Stream<List<Product>> getProductsByName(String name) {
     final productRef = _firestore
         .collection('product')
-        .where('name', isGreaterThanOrEqualTo: name)
-        .where('name', isLessThan: '${name}z');
+        .where('name', isGreaterThanOrEqualTo: name.toLowerCase())
+        .where('name', isLessThan: '${name.toLowerCase()}z');
     return productRef.snapshots().map((products) =>
         products.docs.map((product) => Product.fromSnapshot(product)).toList());
   }

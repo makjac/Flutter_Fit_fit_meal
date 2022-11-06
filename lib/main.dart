@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
-import 'package:fit_fit_meal/bloc/product/product_bloc.dart';
 import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
+import 'package:fit_fit_meal/data/models/product_model.dart';
 import 'package:fit_fit_meal/firebase_options.dart';
 import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
@@ -34,7 +34,6 @@ Future main() async {
           create: (context) => AuthBloc()..add(CheckUser()),
         ),
         BlocProvider<UserBloc>(create: (context) => UserBloc()),
-        BlocProvider<ProductBloc>(create: (context) => ProductBloc()),
       ],
       child: const FitFitMeal(),
     ),
@@ -100,7 +99,9 @@ class _FitFitMealState extends State<FitFitMeal> {
           ),
           GoRoute(
             path: "results",
-            builder: (context, state) => const ProductsResults(),
+            builder: (context, state) => ProductsResults(
+              stream: state.extra as Stream<List<Product>>,
+            ),
           ),
         ],
       ),

@@ -1,8 +1,7 @@
+import 'package:fit_fit_meal/data/repository/model_repository/product_repository/product_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../bloc/product/product_bloc.dart';
 import '../../../../../utils/insets.dart';
 
 class ProductSearchBar extends StatelessWidget {
@@ -54,10 +53,9 @@ class ProductSearchBar extends StatelessWidget {
             onPressed: () {
               final isValid = _formKey.currentState?.validate();
               if (isValid == true) {
-                BlocProvider.of<ProductBloc>(context).add(
-                  LoadProductByName(name: _fieldController.value.text),
-                );
-                context.go("/home/results");
+                ProductRepository repo = ProductRepository();
+                context.go("/home/results",
+                    extra: repo.getProductsByName(_fieldController.text));
               }
             },
             icon: const Icon(

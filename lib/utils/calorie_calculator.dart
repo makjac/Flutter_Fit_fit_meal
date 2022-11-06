@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
+import 'package:flutter/material.dart';
 
 //calculates ppm using the Harris-Benedict formula
 class CalorieCalculator {
@@ -35,5 +36,45 @@ class CalorieCalculator {
       return weight / pow(height / 100, 2);
     }
     return null;
+  }
+
+  static Color fatValueColor(num value) {
+    if (value <= 3) {
+      return Colors.green;
+    }
+    if (value <= 17.5) {
+      return Colors.amber;
+    }
+    return Colors.red;
+  }
+
+  static Color saturatValueColor(num value) {
+    if (value <= 1.5) {
+      return Colors.green;
+    }
+    if (value <= 5) {
+      return Colors.amber;
+    }
+    return Colors.red;
+  }
+
+  static Color sugarsValueColor(num value) {
+    if (value <= 5) {
+      return Colors.green;
+    }
+    if (value <= 22.5) {
+      return Colors.amber;
+    }
+    return Colors.red;
+  }
+
+  static Color saltsValueColor(num value) {
+    if (value <= 0.3) {
+      return Colors.green;
+    }
+    if (value <= 1.5) {
+      return Colors.amber;
+    }
+    return Colors.red;
   }
 }

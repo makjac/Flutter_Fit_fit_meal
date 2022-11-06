@@ -42,7 +42,6 @@ class ProductController extends BaseProductController {
       List<Product> complete = [];
       await for (final value in _productRepository.getProductsByName(name)) {
         complete = value;
-        break;
       }
       return complete;
     } catch (error) {
