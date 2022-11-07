@@ -7,8 +7,9 @@ import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dar
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
 import 'package:fit_fit_meal/screens/auth/signUp/sign_up_page.dart';
 import 'package:fit_fit_meal/screens/home/home_page.dart';
-import 'package:fit_fit_meal/screens/home/pages/products_result/products_results.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/barcode_scaner.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/product_page/product_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/products_result/products_results.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/scaner/barcode_scaner.dart';
 import 'package:fit_fit_meal/screens/home/pages/weekly_details/weekly_details.dart';
 import 'package:fit_fit_meal/screens/tutorial/tutorial_page.dart';
 import 'package:fit_fit_meal/screens/welcome/welcome_page.dart';
@@ -102,6 +103,11 @@ class _FitFitMealState extends State<FitFitMeal> {
             builder: (context, state) => ProductsResults(
               stream: state.extra as Stream<List<Product>>,
             ),
+          ),
+          GoRoute(
+            path: "product",
+            builder: (context, state) =>
+                ProductPage(product: state.extra as Product),
           ),
         ],
       ),
