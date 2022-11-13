@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/utils/decimal_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../../utils/insets.dart';
 
@@ -16,6 +18,7 @@ class ProductPortion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController();
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -44,7 +47,12 @@ class ProductPortion extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
-                    keyboardType: TextInputType.number,
+                    controller: controller,
+                    inputFormatters: [
+                      DecimalTextInputFormatter(decimalRange: 2)
+                    ],
+                    keyboardType:
+                        const TextInputType.numberWithOptions(decimal: true),
                     decoration: InputDecoration(
                       labelStyle: const TextStyle(
                         color: Colors.red,
