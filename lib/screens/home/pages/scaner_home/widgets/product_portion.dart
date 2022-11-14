@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/data/models/food_label_model.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_container.dart';
+import 'package:fit_fit_meal/utils/calorie_calculator.dart';
 import 'package:fit_fit_meal/utils/decimal_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
-import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../utils/insets.dart';
 
@@ -19,16 +22,8 @@ class ProductPortion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(30),
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(10),
-        ),
-      ),
+    GlobalKey<FormState> key = GlobalKey<FormState>();
+    return ProductContainer(
       child: Padding(
         padding: const EdgeInsets.all(Insets.s),
         child: Column(
@@ -46,36 +41,45 @@ class ProductPortion extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: TextFormField(
-                    controller: controller,
-                    inputFormatters: [
-                      DecimalTextInputFormatter(decimalRange: 2)
-                    ],
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
-                    decoration: InputDecoration(
-                      labelStyle: const TextStyle(
+                  child: Form(
+                    key: key,
+                    child: TextFormField(
+                      controller: controller,
+                      validator: (value) {
+                        if (value == "") {
+                          return "value can't be null";
+                        }
+                        return null;
+                      },
+                      inputFormatters: [
+                        DecimalTextInputFormatter(decimalRange: 2)
+                      ],
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      decoration: InputDecoration(
+                        labelStyle: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        labelText: "Grams: ",
+                        focusColor: Colors.red,
+                        border: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.red.withOpacity(0.6)),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
+                      style: const TextStyle(
                         color: Colors.red,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
-                      labelText: "Grams: ",
-                      focusColor: Colors.red,
-                      border: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.red.withOpacity(0.6)),
-                      ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red),
-                      ),
+                      cursorColor: Colors.red,
                     ),
-                    style: const TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    cursorColor: Colors.red,
                   ),
                 )
               ],
@@ -84,7 +88,36 @@ class ProductPortion extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (key.currentState!.validate()) {
+                    num mealWheight = num.parse(controller.text);
+                    Product result = Product(
+                      barcode: product.barcode,
+                      name: product.name,
+                      producer: product.producer,
+                      unit: product.unit,
+                      nutritionalLabelling: FoodLabel(
+                        energy: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.energy, mealWheight),
+                        fat: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.fat, mealWheight),
+                        saturated: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.saturated,
+                            mealWheight),
+                        protein: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.protein, mealWheight),
+                        salt: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.salt, mealWheight),
+                        sugar: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.sugar, mealWheight),
+                        carbohydrates: CalorieCalculator.proportion(
+                            product.nutritionalLabelling.carbohydrates,
+                            mealWheight),
+                      ),
+                    );
+                    context.go("/home/conclusion", extra: result);
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   shape: const RoundedRectangleBorder(

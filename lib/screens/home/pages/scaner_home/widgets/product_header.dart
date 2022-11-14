@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_container.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
@@ -15,16 +16,7 @@ class ProductHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(30),
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(10),
-        ),
-      ),
+    return ProductContainer(
       child: Padding(
         padding: const EdgeInsets.all(Insets.s),
         child: Row(

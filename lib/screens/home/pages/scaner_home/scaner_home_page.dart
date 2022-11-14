@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/barcode_scan_button.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_lottie_circle.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_search_bar.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class ScanerHomePage extends StatelessWidget {
   const ScanerHomePage({super.key});
@@ -41,7 +41,7 @@ class ScanerHomePage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           SizedBox(height: size.height / 30),
-          SizedBox(height: size.width / 2, child: _lottieCircle()),
+          SizedBox(height: size.width / 2, child: const ProductLottieCircle()),
           SizedBox(height: size.height / 20),
           SizedBox(width: size.width / 1.5, child: _title()),
           SizedBox(height: size.height / 15),
@@ -59,7 +59,9 @@ class ScanerHomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: size.height / 2.3, child: _lottieCircle()),
+                SizedBox(
+                    height: size.height / 2.3,
+                    child: const ProductLottieCircle()),
                 const SizedBox(height: Insets.s),
                 _title(),
               ],
@@ -71,15 +73,6 @@ class ScanerHomePage extends StatelessWidget {
           Expanded(flex: 12, child: _content()),
           const Spacer(),
         ],
-      );
-
-  Widget _lottieCircle() => CircleAvatar(
-        backgroundColor: Colors.white,
-        radius: 110,
-        child: Padding(
-          padding: const EdgeInsets.all(Insets.s),
-          child: LottieBuilder.asset("assets/lottie/food.json"),
-        ),
       );
 
   Widget _title() => const Center(

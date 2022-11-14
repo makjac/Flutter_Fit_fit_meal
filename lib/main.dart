@@ -7,6 +7,7 @@ import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dar
 import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
 import 'package:fit_fit_meal/screens/auth/signUp/sign_up_page.dart';
 import 'package:fit_fit_meal/screens/home/home_page.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/conclusion_page/conclusion_page.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/product_page/product_page.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/products_result/products_results.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/scaner/barcode_scaner.dart';
@@ -108,6 +109,11 @@ class _FitFitMealState extends State<FitFitMeal> {
             path: "product",
             builder: (context, state) =>
                 ProductPage(product: state.extra as Product),
+          ),
+          GoRoute(
+            path: "conclusion",
+            builder: (context, state) =>
+                ConclusionPage(product: state.extra as Product),
           ),
         ],
       ),

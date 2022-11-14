@@ -41,6 +41,9 @@ class CalorieCalculator {
   static num calculateDailyValue(num productValue, num dailyValue) =>
       productValue / dailyValue * 100;
 
+  static num proportion(num calorie, num mealWheight) =>
+      calorie * mealWheight / 100;
+
   static Color fatValueColor(num value) {
     if (value <= 3) {
       return Colors.green;
