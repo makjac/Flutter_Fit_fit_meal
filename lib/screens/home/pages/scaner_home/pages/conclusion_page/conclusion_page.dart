@@ -50,10 +50,35 @@ class ConclusionPage extends StatelessWidget {
                         foregroundColor: Colors.red,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
+                            bottomLeft: Radius.circular(10),
                             bottomRight: Radius.circular(10),
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: Insets.xs),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () => context.pop(),
+                      icon: const Icon(Icons.save),
+                      label: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Insets.s, horizontal: Insets.xs),
+                        child: Text("End conlusion"),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
                           ),
                         ),
                       ),

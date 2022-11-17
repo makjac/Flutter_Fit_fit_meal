@@ -32,7 +32,7 @@ class ProductConclusionDetails extends StatelessWidget {
                 fontSize: 25,
               ),
             ),
-            const SizedBox(height: Insets.s),
+            const SizedBox(height: Insets.xs),
             _nutritionRow("Energy:",
                 "${product.nutritionalLabelling.energy.ceil()} kcal"),
             _nutritionRow("Fat:",
