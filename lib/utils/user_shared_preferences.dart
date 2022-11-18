@@ -12,6 +12,7 @@ class UserSharedPreferences {
   static const _keyUserAge = 'user_age';
   static const _keyUserPAL = 'user_pal';
   static const _keyLastLogIn = 'last_log_in';
+  static const _keyStats = 'stats';
 
   static Future init() async {
     _preferences = await SharedPreferences.getInstance();
@@ -68,4 +69,10 @@ class UserSharedPreferences {
       _preferences.setInt(_keyLastLogIn, timeStamp);
 
   static int? getLastLoggedIn() => _preferences.getInt(_keyLastLogIn);
+
+  //stats
+  static Future setStats(List<String> stats) async =>
+      _preferences.setStringList(_keyStats, stats);
+
+  static List<String>? getStats() => _preferences.getStringList(_keyStats);
 }

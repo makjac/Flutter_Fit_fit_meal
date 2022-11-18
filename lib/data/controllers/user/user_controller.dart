@@ -31,6 +31,8 @@ class UserController extends BaseUserController {
       final userUID = await _authRepository.getUID();
       _userRepository.getUser(userUID!).listen((user) async {
         await _userRepository.saveUser(user);
+        await UserSharedPreferences.setLastLoggedIn(
+            DateTime.now().millisecondsSinceEpoch);
       });
     } catch (error) {
       throw Exception(error);
@@ -45,6 +47,8 @@ class UserController extends BaseUserController {
           await _authRepository.signUp(email: email, passwd: passwd);
       await _userRepository.initUserDocument(userUID!);
       await _authRepository.signIn(email: email, passwd: passwd);
+      await UserSharedPreferences.setLastLoggedIn(
+          DateTime.now().millisecondsSinceEpoch);
     } catch (error) {
       throw Exception(error);
     }

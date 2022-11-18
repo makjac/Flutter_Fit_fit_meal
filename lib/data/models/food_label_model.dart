@@ -54,6 +54,16 @@ class FoodLabel extends Equatable {
   factory FoodLabel.fromJson(String source) =>
       FoodLabel.fromMap(json.decode(source) as Map<String, dynamic>);
 
+  FoodLabel operator +(FoodLabel label) => FoodLabel(
+        energy: energy + label.energy,
+        fat: fat + label.fat,
+        saturated: saturated + label.saturated,
+        protein: protein + label.protein,
+        salt: salt + label.salt,
+        sugar: sugar + label.sugar,
+        carbohydrates: carbohydrates + label.carbohydrates,
+      );
+
   const FoodLabel({
     required this.energy,
     required this.fat,

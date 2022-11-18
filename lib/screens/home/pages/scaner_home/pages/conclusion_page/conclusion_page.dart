@@ -1,10 +1,11 @@
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/conclusion_add_new_prod_button.dart';
+import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/conclusion_end_burron.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_conclusion_details.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_lottie_circle.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
-import 'package:go_router/go_router.dart';
 
 class ConclusionPage extends StatelessWidget {
   final Product product;
@@ -16,6 +17,7 @@ class ConclusionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Conclusion"),
@@ -29,67 +31,51 @@ class ConclusionPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(Insets.s),
-              child: Column(
-                children: <Widget>[
-                  const ProductLottieCircle(),
-                  const SizedBox(height: Insets.xl),
-                  ProductConclusionDetails(product: product),
-                  const SizedBox(height: Insets.l),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: () => context.pop(),
-                      icon: const Icon(Icons.add),
-                      label: const Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Insets.s, horizontal: Insets.xs),
-                        child: Text("Add new product"),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.red,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: Insets.xs),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: () => context.pop(),
-                      icon: const Icon(Icons.save),
-                      label: const Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Insets.s, horizontal: Insets.xs),
-                        child: Text("End conlusion"),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        foregroundColor: Colors.white,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(10),
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              child: orientation == Orientation.portrait
+                  ? _portraitView()
+                  : _landscapeView(),
             ),
           ),
         ),
       ),
     );
   }
+
+  Widget _landscapeView() => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Insets.l),
+        child: Column(
+          children: [
+            Row(
+              children: <Widget>[
+                //const Spacer(),
+                const Expanded(
+                  flex: 4,
+                  child: ProductLottieCircle(),
+                ),
+                const Spacer(),
+                Expanded(
+                  flex: 8,
+                  child: ProductConclusionDetails(product: product),
+                ),
+              ],
+            ),
+            const SizedBox(height: Insets.s),
+            const ConclusionAddNewProductButton(),
+            const SizedBox(height: Insets.xs),
+            const ConclusionEndButton(),
+          ],
+        ),
+      );
+
+  Widget _portraitView() => Column(
+        children: <Widget>[
+          const ProductLottieCircle(),
+          const SizedBox(height: Insets.xl),
+          ProductConclusionDetails(product: product),
+          const SizedBox(height: Insets.l),
+          const ConclusionAddNewProductButton(),
+          const SizedBox(height: Insets.xs),
+          const ConclusionEndButton(),
+        ],
+      );
 }
