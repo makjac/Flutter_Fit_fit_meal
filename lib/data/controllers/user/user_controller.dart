@@ -34,11 +34,11 @@ class UserController extends BaseUserController {
         await UserSharedPreferences.setLastLoggedIn(
             DateTime.now().millisecondsSinceEpoch);
       });
-      _userRepository.getUserStats(userUID).listen((stats) {
+      await _userRepository.getUserStats(userUID).first.then((stats) {
         if (stats.isNotEmpty) {
           UserSharedPreferences.setStats(stats);
         } else {
-//todo
+          _userRepository.initUserStats(userUID);
         }
       });
     } catch (error) {
@@ -85,6 +85,15 @@ class UserController extends BaseUserController {
     try {
       await _userRepository.updateUserData(user);
       await _userRepository.saveUser(user);
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
+  Future<void> updateUserStats({required UserModel user}) async {
+    try {
+      await _userRepository.updateUserStats(user);
     } catch (error) {
       throw Exception(error);
     }

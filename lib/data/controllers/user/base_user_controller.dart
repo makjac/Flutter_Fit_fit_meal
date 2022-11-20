@@ -12,4 +12,6 @@ abstract class BaseUserController {
   Future<void> resetUserPassword({required String email});
 
   Future<void> updateUserData({required UserModel user});
+
+  Future<void> updateUserStats({required UserModel user});
 }

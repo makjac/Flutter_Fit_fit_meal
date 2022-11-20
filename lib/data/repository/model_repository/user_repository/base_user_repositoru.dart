@@ -19,6 +19,8 @@ abstract class BaseUserRepository {
 
   Future<void> updateUserData(UserModel user);
 
+  Future<void> initUserStats(String userUID);
+
   Future<void> updateUserStats(UserModel user);
 
   Stream<List<String>> getUserStats(String userUID);

@@ -18,6 +18,10 @@ class UpdatingUserData extends UserState {}
 
 class UserDataUpdated extends UserState {}
 
+class UpdatingUserStats extends UserState {}
+
+class UserStatsUpdated extends UserState {}
+
 class UserError extends UserState {
   final String error;
 

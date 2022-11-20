@@ -33,6 +33,21 @@ class UserRepository extends BaseUserRepository {
   }
 
   @override
+  Future<void> initUserStats(String userUID) async {
+    try {
+      final statsRef = _firestore
+          .collection('user')
+          .doc(userUID)
+          .collection('stats')
+          .doc('stats');
+      final nullStats = List<String>.generate(7, (index) => super.nullStat);
+      await statsRef.set({'stats': nullStats});
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
   Future<void> updateUserData(UserModel user) async {
     try {
       final userRef = _firestore.collection('user').doc(user.uid);
@@ -60,12 +75,12 @@ class UserRepository extends BaseUserRepository {
   @override
   Stream<List<String>> getUserStats(String userUID) {
     try {
-      final userRef = _firestore
+      final statsRef = _firestore
           .collection('user')
           .doc(userUID)
           .collection('stats')
           .doc('stats');
-      return userRef.snapshots().map((stats) => stats['stats'] as List<String>);
+      return statsRef.snapshots().map((stats) => stats['stats'].cast<String>());
     } catch (error) {
       throw Exception(error);
     }

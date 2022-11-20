@@ -2,9 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/models/food_label_model.dart';
+import '../../../../utils/user_shared_preferences.dart';
 import '../main/widgets/bar_chart/bar_chart.dart';
 
-List<double> data = [2230, 1968, 1000, 2777, 2000, 2150, 2333];
+// List<double> data = [2230, 1968, 1000, 2777, 2000, 2150, 2333];
 List<String> days = ["M", "T", "W", "T", "F", "S", "S"];
 
 class WeeklyDetails extends StatelessWidget {
@@ -46,6 +48,11 @@ class WeeklyDetails extends StatelessWidget {
             "Your calories in a week",
             Colors.red,
             const Color.fromARGB(100, 244, 67, 54),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).energy.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
             const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
@@ -59,6 +66,11 @@ class WeeklyDetails extends StatelessWidget {
             "Your sugar in a week",
             Colors.pink,
             const Color.fromARGB(100, 233, 30, 98),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).sugar.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           const SizedBox(height: Insets.s),
           _chart(
@@ -66,6 +78,11 @@ class WeeklyDetails extends StatelessWidget {
             "Your fats in a week",
             Colors.amber,
             const Color.fromARGB(100, 255, 193, 7),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).fat.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           const SizedBox(height: Insets.s),
           _chart(
@@ -73,6 +90,11 @@ class WeeklyDetails extends StatelessWidget {
             "Your protein in a week",
             Colors.green,
             const Color.fromARGB(100, 76, 175, 79),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).protein.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           const SizedBox(height: Insets.s),
           _chart(
@@ -80,6 +102,11 @@ class WeeklyDetails extends StatelessWidget {
             "Your salt in a week",
             Colors.blue,
             const Color.fromARGB(100, 33, 149, 243),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).salt.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           const SizedBox(height: Insets.s),
           _chart(
@@ -87,6 +114,12 @@ class WeeklyDetails extends StatelessWidget {
             "Your carbohydrates in a week",
             Colors.black,
             const Color.fromARGB(100, 0, 0, 0),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) =>
+                        FoodLabel.fromJson(stat).carbohydrates.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
             const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(30),
@@ -110,6 +143,11 @@ class WeeklyDetails extends StatelessWidget {
             "Your calories in a week",
             Colors.red,
             const Color.fromARGB(100, 244, 67, 54),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).energy.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
             const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
@@ -122,30 +160,56 @@ class WeeklyDetails extends StatelessWidget {
             "Your sugar in a week",
             Colors.pink,
             const Color.fromARGB(100, 233, 30, 98),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).sugar.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           _chart(
             "Daily fats",
             "Your fats in a week",
             Colors.amber,
             const Color.fromARGB(100, 255, 193, 7),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).fat.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           _chart(
             "Daily protein",
             "Your protein in a week",
             Colors.green,
             const Color.fromARGB(100, 76, 175, 79),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).protein.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           _chart(
             "Daily salt",
             "Your salt in a week",
             Colors.blue,
             const Color.fromARGB(100, 33, 149, 243),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) => FoodLabel.fromJson(stat).salt.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
           ),
           _chart(
             "Daily carbohydrates",
             "Your carbohydrates in a week",
             Colors.black,
             const Color.fromARGB(100, 0, 0, 0),
+            UserSharedPreferences.getStats() != null
+                ? UserSharedPreferences.getStats()!
+                    .map((stat) =>
+                        FoodLabel.fromJson(stat).carbohydrates.toDouble())
+                    .toList()
+                : [0, 0, 0, 0, 0, 0, 0],
             const BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(30),
@@ -156,8 +220,8 @@ class WeeklyDetails extends StatelessWidget {
         ],
       );
 
-  Widget _chart(
-          String title, String subtitle, Color activeColor, Color inactiveColor,
+  Widget _chart(String title, String subtitle, Color activeColor,
+          Color inactiveColor, List<double> data,
           [BorderRadiusGeometry? borderRadius]) =>
       BarChart(
         data: data,

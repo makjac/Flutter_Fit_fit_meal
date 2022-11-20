@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/data/models/food_label_model.dart';
 import 'package:fit_fit_meal/screens/home/pages/main/widgets/bar_chart/bar_chart.dart';
 import 'package:fit_fit_meal/screens/home/pages/main/widgets/bmi_chart/bmi_chart.dart';
 import 'package:fit_fit_meal/screens/home/pages/main/widgets/labelled_data.dart';
 import 'package:fit_fit_meal/utils/calorie_calculator.dart';
+import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/shadow_radius_all.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -98,9 +100,15 @@ class MainPage extends StatelessWidget {
       );
 
   Widget _chart(BuildContext context) => BarChart(
-        data: data,
-        labels: days,
-        enableLabels: true,
+        data: UserSharedPreferences.getStats() != null
+            ? UserSharedPreferences.getStats()!
+                .map((stat) => FoodLabel.fromJson(stat).energy.toDouble())
+                .toList()
+                .reversed
+                .toList()
+            : [0, 0, 0, 0, 0, 0, 0],
+        //labels: days,
+        enableLabels: false,
         height: 350,
         title: const Padding(
           padding: EdgeInsets.symmetric(horizontal: Insets.xs),
@@ -117,7 +125,7 @@ class MainPage extends StatelessWidget {
         subtitle: const Padding(
           padding: EdgeInsets.symmetric(horizontal: Insets.xs, vertical: 1),
           child: AutoSizeText(
-            "Your calories in a week",
+            "Your calories in this week",
             maxLines: 1,
             style: TextStyle(
               color: Colors.red,
@@ -147,14 +155,15 @@ class MainPage extends StatelessWidget {
 
   Widget _chartFotter(BuildContext context) => Column(
         children: <Widget>[
-          const Divider(
-            color: Color.fromARGB(100, 244, 67, 54),
-            indent: Insets.s,
-            endIndent: Insets.s,
-            thickness: 0.7,
-          ),
+          // const Divider(
+          //   color: Color.fromARGB(100, 244, 67, 54),
+          //   indent: Insets.s,
+          //   endIndent: Insets.s,
+          //   thickness: 0.7,
+          // ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Insets.xs),
+            padding: const EdgeInsets.only(
+                left: Insets.xs, right: Insets.xs, top: Insets.xs),
             child: ElevatedButton(
               onPressed: () => context.go("/home/weekly_details"),
               style: ElevatedButton.styleFrom(

@@ -29,3 +29,12 @@ class UpdateUserData extends UserEvent {
   @override
   List<Object> get props => [user];
 }
+
+class UpdateUserStats extends UserEvent {
+  final FoodLabel label;
+
+  const UpdateUserStats({required this.label});
+
+  @override
+  List<Object> get props => [label];
+}

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_container.dart';
 import 'package:fit_fit_meal/utils/calorie_calculator.dart';
@@ -7,6 +8,7 @@ import 'package:fit_fit_meal/utils/decimal_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../utils/insets.dart';
@@ -116,6 +118,19 @@ class ProductPortion extends StatelessWidget {
                       ),
                     );
                     context.go("/home/conclusion", extra: result);
+                    BlocProvider.of<UserBloc>(context).add(
+                      UpdateUserStats(
+                        label: FoodLabel(
+                            energy: result.nutritionalLabelling.energy,
+                            fat: result.nutritionalLabelling.fat,
+                            saturated: result.nutritionalLabelling.saturated,
+                            protein: result.nutritionalLabelling.protein,
+                            salt: result.nutritionalLabelling.salt,
+                            sugar: result.nutritionalLabelling.sugar,
+                            carbohydrates:
+                                result.nutritionalLabelling.carbohydrates),
+                      ),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -129,12 +144,21 @@ class ProductPortion extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(Insets.xs + 2),
-                  child: AutoSizeText(
-                    "Save",
-                    maxLines: 1,
-                    style: TextStyle(fontSize: 16),
+                child: Padding(
+                  padding: const EdgeInsets.all(Insets.xs + 2),
+                  child: BlocBuilder<UserBloc, UserState>(
+                    builder: (context, state) {
+                      if (state is UpdatingUserStats) {
+                        return const CircularProgressIndicator(
+                          color: Colors.white,
+                        );
+                      }
+                      return const AutoSizeText(
+                        "Save",
+                        maxLines: 1,
+                        style: TextStyle(fontSize: 16),
+                      );
+                    },
                   ),
                 ),
               ),

@@ -37,11 +37,11 @@ class Bar extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Expanded(
-                      flex: (100 * (1 - value)).toInt(),
+                      flex: !value.isNaN ? (100 * (1 - value)).toInt() : 100,
                       child: Container(),
                     ),
                     Expanded(
-                      flex: (100 * value).toInt(),
+                      flex: !value.isNaN ? (100 * value).toInt() : 0,
                       child: Container(
                         decoration: BoxDecoration(
                           color: activeColor ?? Colors.red,
