@@ -24,6 +24,9 @@ class UserRepository extends BaseUserRepository {
     try {
       final userRef = _firestore.collection('user').doc(userUID);
       await userRef.set({'login': ""});
+      final statsRef = userRef.collection('stats').doc('stats');
+      final nullStats = List<String>.generate(7, (index) => super.nullStat);
+      await statsRef.set({'stats': nullStats});
     } catch (error) {
       throw Exception(error);
     }
@@ -34,6 +37,35 @@ class UserRepository extends BaseUserRepository {
     try {
       final userRef = _firestore.collection('user').doc(user.uid);
       await userRef.update(user.toMap());
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
+  Future<void> updateUserStats(UserModel user) async {
+    try {
+      final statsRef = _firestore
+          .collection('user')
+          .doc(user.uid)
+          .collection('stats')
+          .doc('stats');
+      final userStats = UserSharedPreferences.getStats();
+      await statsRef.update({'stats': userStats});
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  @override
+  Stream<List<String>> getUserStats(String userUID) {
+    try {
+      final userRef = _firestore
+          .collection('user')
+          .doc(userUID)
+          .collection('stats')
+          .doc('stats');
+      return userRef.snapshots().map((stats) => stats['stats'] as List<String>);
     } catch (error) {
       throw Exception(error);
     }

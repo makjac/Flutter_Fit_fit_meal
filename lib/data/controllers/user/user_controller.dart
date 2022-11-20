@@ -34,6 +34,13 @@ class UserController extends BaseUserController {
         await UserSharedPreferences.setLastLoggedIn(
             DateTime.now().millisecondsSinceEpoch);
       });
+      _userRepository.getUserStats(userUID).listen((stats) {
+        if (stats.isNotEmpty) {
+          UserSharedPreferences.setStats(stats);
+        } else {
+//todo
+        }
+      });
     } catch (error) {
       throw Exception(error);
     }
