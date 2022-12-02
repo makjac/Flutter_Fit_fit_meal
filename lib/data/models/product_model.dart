@@ -35,7 +35,7 @@ class Product extends Equatable {
       'name': name,
       'producer': producer,
       'unit': unit,
-      'nutritionalLabelling': nutritionalLabelling.toMap(),
+      'nutritional_labelling': nutritionalLabelling.toMap(),
     };
   }
 
@@ -46,7 +46,7 @@ class Product extends Equatable {
       producer: map['producer'] as String,
       unit: map['unit'] as String,
       nutritionalLabelling: FoodLabel.fromMap(
-          map['nutritionalLabelling'] as Map<String, dynamic>),
+          map['nutritional_labelling'] as Map<String, dynamic>),
     );
   }
 

@@ -42,7 +42,8 @@ class AddNewProductPage extends StatelessWidget {
                       ),
                       style: const TextStyle(color: Colors.white),
                       validator: (value) => isNull(value),
-                      onSaved: (newName) => product.name = newName!,
+                      onSaved: (newName) =>
+                          product.name = newName!.toLowerCase(),
                     ),
                     const SizedBox(height: Insets.xs),
                     TextFormField(
@@ -59,7 +60,8 @@ class AddNewProductPage extends StatelessWidget {
                       decoration: borderNoneLabeled("Producer"),
                       style: const TextStyle(color: Colors.white),
                       validator: (value) => isNull(value),
-                      onSaved: (newProducer) => product.producer = newProducer!,
+                      onSaved: (newProducer) =>
+                          product.producer = newProducer!.toLowerCase(),
                     ),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(

@@ -65,6 +65,7 @@ class AuthRepository extends BaseAuthRepository {
     try {
       final user = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: passwd);
+      await UserSharedPreferences.setUserUID(user.user?.uid ?? "");
       return user.user?.uid;
     } catch (error) {
       throw Exception(error);
