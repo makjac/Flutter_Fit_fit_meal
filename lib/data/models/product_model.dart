@@ -7,13 +7,13 @@ import 'package:equatable/equatable.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
 
 class Product extends Equatable {
-  final String barcode;
-  final String name;
-  final String producer;
-  final String unit;
-  final FoodLabel nutritionalLabelling;
+  String barcode;
+  String name;
+  String producer;
+  String unit;
+  FoodLabel nutritionalLabelling;
 
-  const Product({
+  Product({
     required this.barcode,
     required this.name,
     required this.producer,

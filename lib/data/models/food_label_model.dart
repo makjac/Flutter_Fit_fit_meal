@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class FoodLabel extends Equatable {
-  final num energy;
-  final num fat;
-  final num saturated;
-  final num protein;
-  final num salt;
-  final num sugar;
-  final num carbohydrates;
+  num energy;
+  num fat;
+  num saturated;
+  num protein;
+  num salt;
+  num sugar;
+  num carbohydrates;
 
   @override
   List<Object?> get props => [
@@ -64,7 +64,7 @@ class FoodLabel extends Equatable {
         carbohydrates: carbohydrates + label.carbohydrates,
       );
 
-  const FoodLabel({
+  FoodLabel({
     required this.energy,
     required this.fat,
     required this.saturated,

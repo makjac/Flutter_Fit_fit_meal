@@ -21,6 +21,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'bloc/product/product_bloc.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -37,6 +39,7 @@ Future main() async {
           create: (context) => AuthBloc()..add(CheckUser()),
         ),
         BlocProvider<UserBloc>(create: (context) => UserBloc()),
+        BlocProvider<ProductBloc>(create: (context) => ProductBloc()),
       ],
       child: const FitFitMeal(),
     ),
