@@ -12,14 +12,11 @@ class MenuElements {
       MenuElement(label: "Scan Product", icon: Icon(Icons.qr_code));
   static const profile =
       MenuElement(label: "Profile", icon: Icon(Icons.person));
-  static const settings =
-      MenuElement(label: "Setting", icon: Icon(Icons.settings));
 
   static const elements = [
     main,
     scanProduct,
     profile,
-    settings,
   ];
 }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-InputDecoration borderNone(String hintText, Icon icon) => InputDecoration(
+InputDecoration borderNone(String hintText, [Icon? icon]) => InputDecoration(
       border: const OutlineInputBorder(
         borderSide: BorderSide(
           width: 2,

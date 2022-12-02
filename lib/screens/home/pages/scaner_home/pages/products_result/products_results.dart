@@ -3,6 +3,7 @@ import 'package:fit_fit_meal/data/models/product_model.dart';
 import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/result_button.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
 class ProductsResults extends StatelessWidget {
@@ -20,36 +21,83 @@ class ProductsResults extends StatelessWidget {
       ),
       backgroundColor: Colors.orange,
       body: SafeArea(
-        child: StreamBuilder<List<Product>>(
-          stream: stream,
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return _onHasError(snapshot.error, snapshot.stackTrace);
-            } else {
-              switch (snapshot.connectionState) {
-                case ConnectionState.none:
-                  return _onConnectionStateNone();
-                case ConnectionState.waiting:
-                  return _onConnectionStateWating();
-                case ConnectionState.active:
-                  if (snapshot.data!.isNotEmpty) {
-                    return _productsResults(snapshot.data!);
-                  } else {
-                    return const Center(
-                      child: Text("No matches..."),
-                    );
-                  }
-                case ConnectionState.done:
-                  if (snapshot.data!.isNotEmpty) {
-                    return _productsResults(snapshot.data!);
-                  } else {
-                    return const Center(
-                      child: Text("No matches..."),
-                    );
-                  }
+        child: Padding(
+          padding: const EdgeInsets.all(Insets.s),
+          child: StreamBuilder<List<Product>>(
+            stream: stream,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return _onHasError(snapshot.error, snapshot.stackTrace);
+              } else {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.none:
+                    return _onConnectionStateNone();
+                  case ConnectionState.waiting:
+                    return _onConnectionStateWating();
+                  case ConnectionState.active:
+                    if (snapshot.data!.isNotEmpty) {
+                      return _productsResults(snapshot.data!);
+                    } else {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const AutoSizeText(
+                              "No matches...",
+                              maxLines: 1,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                            const SizedBox(height: Insets.xxl),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () =>
+                                    context.go('/home/add_product'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.red,
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(Insets.s),
+                                  child: AutoSizeText(
+                                    "Add new product!",
+                                    maxLines: 1,
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  case ConnectionState.done:
+                    if (snapshot.data!.isNotEmpty) {
+                      return _productsResults(snapshot.data!);
+                    } else {
+                      return Center(
+                        child: Column(
+                          children: const [
+                            Text(
+                              "No matches...",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                }
               }
-            }
-          },
+            },
+          ),
         ),
       ),
     );

@@ -47,7 +47,6 @@ class ConclusionPage extends StatelessWidget {
           children: [
             Row(
               children: <Widget>[
-                //const Spacer(),
                 const Expanded(
                   flex: 4,
                   child: ProductLottieCircle(),

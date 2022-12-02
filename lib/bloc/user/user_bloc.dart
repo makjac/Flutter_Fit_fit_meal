@@ -46,8 +46,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       emit(UpdatingUserStats());
       UserModel user = UserModel.fromSharedPreferences();
-      await _activityRepository.updateDay();
       await _activityRepository.updateStats(event.label);
+      await _activityRepository.updateDay();
       await _userController.updateUserStats(user: user);
       emit(UserStatsUpdated());
     } catch (error) {
