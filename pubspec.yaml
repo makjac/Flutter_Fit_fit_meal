@@ -51,6 +51,7 @@ dependencies:
   fast_barcode_scanner: ^1.1.4
   google_mobile_ads: ^2.2.0
   flutter_native_splash: ^2.2.13
+  dcdg: ^4.1.0
 
 
 flutter_native_splash:

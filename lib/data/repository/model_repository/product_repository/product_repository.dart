@@ -10,15 +10,10 @@ class ProductRepository extends BaseProductRepository {
 
   @override
   Stream<List<Product>> getProductsByBarcode(String barcode) {
-    try {
-      final productRef =
-          _firestore.collection('product').where('barcode', isEqualTo: barcode);
-      return productRef.snapshots().map((products) => products.docs
-          .map((product) => Product.fromSnapshot(product))
-          .toList());
-    } catch (error) {
-      throw Exception(error);
-    }
+    final productRef =
+        _firestore.collection('product').where('barcode', isEqualTo: barcode);
+    return productRef.snapshots().map((products) =>
+        products.docs.map((product) => Product.fromSnapshot(product)).toList());
   }
 
   @override
@@ -33,11 +28,7 @@ class ProductRepository extends BaseProductRepository {
 
   @override
   Future<void> createNewProduct(Product product) async {
-    try {
-      final productRef = _firestore.collection('product');
-      await productRef.add(product.toMap());
-    } catch (error) {
-      throw Exception(error);
-    }
+    final productRef = _firestore.collection('product');
+    await productRef.add(product.toMap());
   }
 }

@@ -1,15 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
-import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/activity_item.dart';
 import 'package:fit_fit_meal/screens/tutorial/pages/third_tutorial_page/utils/activity_items.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
 import '../../../../widgets/buttons/activity_choice_button.dart';
