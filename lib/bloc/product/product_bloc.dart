@@ -9,10 +9,10 @@ part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  ProductController _productController;
+  ProductController productController;
 
   ProductBloc({ProductController? productController})
-      : _productController = productController ?? ProductController(),
+      : productController = productController ?? ProductController(),
         super(ProductInitial()) {
     on<CreateProduct>(_create);
   }
@@ -21,7 +21,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       CreateProduct event, Emitter<ProductState> emit) async {
     try {
       emit(CreatingProduct());
-      await _productController.addNewProduct(event.product);
+      await productController.addNewProduct(event.product);
       emit(ProductCreated());
     } catch (error) {
       emit(
