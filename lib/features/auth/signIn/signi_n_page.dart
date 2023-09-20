@@ -1,4 +1,4 @@
-import 'package:fit_fit_meal/screens/auth/signIn/sign_in_context.dart';
+import 'package:fit_fit_meal/features/auth/signIn/sign_in_context.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:fit_fit_meal/widgets/buttons/pop_back_arrow.dart';
 import 'package:flutter/material.dart';
