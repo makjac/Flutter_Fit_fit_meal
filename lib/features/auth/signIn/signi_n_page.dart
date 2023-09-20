@@ -1,4 +1,5 @@
 import 'package:fit_fit_meal/features/auth/signIn/sign_in_context.dart';
+import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/home_gradnient_bacground.dart';
 import 'package:fit_fit_meal/widgets/buttons/pop_back_arrow.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,8 @@ class LoginPage extends StatelessWidget {
               children: [
                 SignInContext(),
                 const Positioned(
-                  top: 5,
-                  left: 5,
+                  top: Insets.xs,
+                  left: Insets.xs,
                   child: PopBackArrow(),
                 ),
               ],
