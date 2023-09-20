@@ -173,9 +173,9 @@ class MainPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
+                children: <Widget>[
                   Text("See more"),
                   Icon(
                     Icons.arrow_forward_ios_outlined,

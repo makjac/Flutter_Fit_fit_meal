@@ -79,9 +79,9 @@ class ProductsResults extends StatelessWidget {
                     if (snapshot.data!.isNotEmpty) {
                       return _productsResults(snapshot.data!);
                     } else {
-                      return Center(
+                      return const Center(
                         child: Column(
-                          children: const [
+                          children: [
                             Text(
                               "No matches...",
                               style: TextStyle(
@@ -116,10 +116,10 @@ class ProductsResults extends StatelessWidget {
         ),
       );
 
-  Widget _onConnectionStateNone() => Center(
+  Widget _onConnectionStateNone() => const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(
               Icons.info,
               color: Colors.blue,

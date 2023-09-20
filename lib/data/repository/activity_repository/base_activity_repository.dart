@@ -1,7 +1,7 @@
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
 
 abstract class BaseActivityRepository {
-  String nullStat = FoodLabel(
+  String nullStat = const FoodLabel(
     energy: 0,
     fat: 0,
     saturated: 0,

@@ -23,9 +23,9 @@ class BarcodeScanButton extends StatelessWidget {
                 topLeft: Radius.circular(5),
               ),
             )),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Icon(Icons.qr_code_scanner_rounded),
             SizedBox(width: Insets.xs),
             Text("Scan barcode"),

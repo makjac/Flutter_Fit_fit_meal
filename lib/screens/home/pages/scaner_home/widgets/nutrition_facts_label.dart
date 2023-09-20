@@ -60,11 +60,11 @@ class NutritonFactsLabel extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Expanded(
+          const Expanded(
             flex: 6,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 AutoSizeText(
                   "Amount per 100 grams",
                   maxLines: 1,
@@ -104,9 +104,9 @@ class NutritonFactsLabel extends StatelessWidget {
 
   Widget _nutrities() => Column(
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: const <Widget>[
+            children: <Widget>[
               AutoSizeText(
                 "% Daily Value *",
                 maxLines: 1,

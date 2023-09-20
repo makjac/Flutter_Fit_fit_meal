@@ -6,7 +6,6 @@ import 'package:fit_fit_meal/screens/home/menu/menu_page.dart';
 import 'package:fit_fit_meal/service/ad_mob_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';

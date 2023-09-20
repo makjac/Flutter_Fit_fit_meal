@@ -7,19 +7,39 @@ import 'package:equatable/equatable.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
 
 class Product extends Equatable {
-  String barcode;
-  String name;
-  String producer;
-  String unit;
-  FoodLabel nutritionalLabelling;
+  final String? _barcode;
+  final String? _name;
+  final String? _producer;
+  final String? _unit;
+  final FoodLabel? _nutritionalLabelling;
 
-  Product({
-    required this.barcode,
-    required this.name,
-    required this.producer,
-    required this.unit,
-    required this.nutritionalLabelling,
-  }) : super();
+  const Product({
+    String? barcode,
+    String? name,
+    String? producer,
+    String? unit,
+    FoodLabel? nutritionalLabelling,
+  })  : _barcode = barcode,
+        _name = name,
+        _producer = producer,
+        _unit = unit,
+        _nutritionalLabelling = nutritionalLabelling;
+
+  Product copyWith({
+    String? barcode,
+    String? name,
+    String? producer,
+    String? unit,
+    FoodLabel? nutritionalLabelling,
+  }) {
+    return Product(
+      barcode: barcode ?? _barcode,
+      name: name ?? _name,
+      producer: producer ?? _producer,
+      unit: unit ?? _unit,
+      nutritionalLabelling: nutritionalLabelling ?? _nutritionalLabelling,
+    );
+  }
 
   static Product fromSnapshot(DocumentSnapshot snap) => Product(
         barcode: snap['barcode'] as String,
@@ -29,13 +49,20 @@ class Product extends Equatable {
         nutritionalLabelling: FoodLabel.fromMap(snap['nutritional_labelling']),
       );
 
+  String get barcode => _barcode ?? "";
+  String get name => _name ?? "";
+  String get producer => _producer ?? "";
+  String get unit => _unit ?? "";
+  FoodLabel get nutritionalLabelling =>
+      _nutritionalLabelling ?? const FoodLabel();
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'barcode': barcode,
-      'name': name,
-      'producer': producer,
-      'unit': unit,
-      'nutritional_labelling': nutritionalLabelling.toMap(),
+      'barcode': _barcode,
+      'name': _name,
+      'producer': _producer,
+      'unit': _unit,
+      'nutritional_labelling': _nutritionalLabelling?.toMap(),
     };
   }
 

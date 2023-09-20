@@ -43,7 +43,7 @@ class AddNewProductPage extends StatelessWidget {
                       style: const TextStyle(color: Colors.white),
                       validator: (value) => isNull(value),
                       onSaved: (newName) =>
-                          product.name = newName!.toLowerCase(),
+                          product.copyWith(name: newName?.toLowerCase()),
                     ),
                     const SizedBox(height: Insets.xs),
                     TextFormField(
@@ -53,54 +53,59 @@ class AddNewProductPage extends StatelessWidget {
                           const TextInputType.numberWithOptions(decimal: false),
                       style: const TextStyle(color: Colors.white),
                       validator: (value) => isNull(value),
-                      onSaved: (newBarcode) => product.barcode = newBarcode!,
+                      onSaved: (newBarcode) =>
+                          product.copyWith(barcode: newBarcode?.toLowerCase()),
                     ),
                     const SizedBox(height: Insets.xs),
                     TextFormField(
                       decoration: borderNoneLabeled("Producer"),
                       style: const TextStyle(color: Colors.white),
                       validator: (value) => isNull(value),
-                      onSaved: (newProducer) =>
-                          product.producer = newProducer!.toLowerCase(),
+                      onSaved: (newProducer) => product.copyWith(
+                          producer: newProducer?.toLowerCase()),
                     ),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Energy (kcal)",
-                        (newEnergy) => product.nutritionalLabelling.energy =
-                            num.tryParse(newEnergy!) ?? 0),
+                        (newEnergy) => product.nutritionalLabelling
+                            .copyWith(energy: num.tryParse(newEnergy!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Fat",
-                        (newFat) => product.nutritionalLabelling.fat =
-                            num.tryParse(newFat!) ?? 0),
+                        (newFat) => product.nutritionalLabelling
+                            .copyWith(fat: num.tryParse(newFat!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Saturated",
-                        (newSat) => product.nutritionalLabelling.saturated =
-                            num.tryParse(newSat!) ?? 0),
+                        (newSaturated) => product.nutritionalLabelling.copyWith(
+                            saturated: num.tryParse(newSaturated!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Carbohydrates",
-                        (newCar) => product.nutritionalLabelling.carbohydrates =
-                            num.tryParse(newCar!) ?? 0),
+                        (newCarbohydrates) => product.nutritionalLabelling
+                            .copyWith(
+                                carbohydrates:
+                                    num.tryParse(newCarbohydrates!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Salts",
-                        (newSalts) => product.nutritionalLabelling.salt =
-                            num.tryParse(newSalts!) ?? 0),
+                        (newSalts) => product.nutritionalLabelling
+                            .copyWith(salt: num.tryParse(newSalts!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Protein",
-                        (newProt) => product.nutritionalLabelling.protein =
-                            num.tryParse(newProt!) ?? 0),
+                        (newProtein) => product.nutritionalLabelling
+                            .copyWith(protein: num.tryParse(newProtein!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     _neutritionTextField(
                         "Sugars",
-                        (newSug) => product.nutritionalLabelling.sugar =
-                            num.tryParse(newSug!) ?? 0),
+                        (newSugar) => product.nutritionalLabelling
+                            .copyWith(sugar: num.tryParse(newSugar!) ?? 0)),
                     const SizedBox(height: Insets.xs),
                     AddProdDropdown(
-                        onChanged: (value) => product.unit = value ?? "grams"),
+                      onChanged: (newUnit) =>
+                          product.copyWith(unit: newUnit?.toLowerCase()),
+                    ),
                     const SizedBox(height: Insets.l),
                     BlocConsumer<ProductBloc, ProductState>(
                       builder: (context, state) {

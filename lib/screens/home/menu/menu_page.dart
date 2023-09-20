@@ -52,11 +52,11 @@ class MenuPage extends StatelessWidget {
     );
   }
 
-  Widget _menuTitle() => Padding(
-        padding: const EdgeInsets.all(Insets.s),
+  Widget _menuTitle() => const Padding(
+        padding: EdgeInsets.all(Insets.s),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
               "FitFitMeal",
               style: TextStyle(
@@ -109,11 +109,11 @@ class MenuPage extends StatelessWidget {
                 width: 2,
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(Insets.xs),
+            child: const Padding(
+              padding: EdgeInsets.all(Insets.xs),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
+                children: <Widget>[
                   Icon(
                     Icons.logout,
                     color: Colors.white,

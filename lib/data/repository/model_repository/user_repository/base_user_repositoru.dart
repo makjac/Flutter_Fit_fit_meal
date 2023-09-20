@@ -3,7 +3,7 @@ import 'package:fit_fit_meal/data/models/user_model.dart';
 import '../../../models/food_label_model.dart';
 
 abstract class BaseUserRepository {
-  String nullStat = FoodLabel(
+  String nullStat = const FoodLabel(
     energy: 0,
     fat: 0,
     saturated: 0,

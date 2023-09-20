@@ -25,10 +25,10 @@ class WelcomePage extends StatelessWidget {
             child: Container(
               width: double.infinity,
               decoration: homeGradientBacground(),
-              child: SafeArea(
+              child: const SafeArea(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     WelcomeTitle(),
                     SizedBox(height: 150),
                     WelcomeSignUpButton(),
