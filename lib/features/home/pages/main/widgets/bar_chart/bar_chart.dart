@@ -63,26 +63,24 @@ class BarChart extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          ...data
-              .map(
-                (value) => Expanded(
-                  child: Bar(
-                    value: _calculateValue(data, value),
-                    activeColor: activeColor,
-                    inactiveColor: inactiveColor,
-                    label: labels?.length == data.length && enableLabels
-                        ? Text(
-                            labels![labelIndex++],
-                            style: const TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        : null,
-                  ),
-                ),
-              )
-              .toList(),
+          ...data.map(
+            (value) => Expanded(
+              child: Bar(
+                value: _calculateValue(data, value),
+                activeColor: activeColor,
+                inactiveColor: inactiveColor,
+                label: labels?.length == data.length && enableLabels
+                    ? Text(
+                        labels![labelIndex++],
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    : null,
+              ),
+            ),
+          ),
         ],
       ),
     );
