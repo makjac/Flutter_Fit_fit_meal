@@ -7,11 +7,11 @@ class TutorialFooter extends StatefulWidget {
   final PageController pageController;
   final int pageCount;
   const TutorialFooter({
-    Key? key,
+    super.key,
     required this.height,
     required this.pageController,
     required this.pageCount,
-  }) : super(key: key);
+  });
 
   @override
   State<TutorialFooter> createState() => _TutorialFooterState();

@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/main/widgets/bar_chart/bar_chart.dart';
-import 'package:fit_fit_meal/screens/home/pages/main/widgets/bmi_chart/bmi_chart.dart';
-import 'package:fit_fit_meal/screens/home/pages/main/widgets/labelled_data.dart';
+import 'package:fit_fit_meal/features/home/pages/main/widgets/bar_chart/bar_chart.dart';
+import 'package:fit_fit_meal/features/home/pages/main/widgets/bmi_chart/bmi_chart.dart';
+import 'package:fit_fit_meal/features/home/pages/main/widgets/labelled_data.dart';
 import 'package:fit_fit_meal/utils/calorie_calculator.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/shadow_radius_all.dart';
@@ -11,9 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../utils/insets.dart';
-
-List<double> data = [2230, 1968, 1000, 2777, 2000, 2150, 2333];
-List<String> days = ["M", "T", "W", "T", "F", "S", "S"];
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -25,6 +22,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.orange,
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.red,
         onPressed: () => context.go("/home/scaner"),
         icon: const Icon(Icons.qr_code_scanner),
         label: const Text("Scan product"),
@@ -38,6 +36,7 @@ class MainPage extends StatelessWidget {
                 centerTitle: true,
                 leading: MenuWidget(),
                 backgroundColor: Colors.orange,
+                foregroundColor: Colors.white,
                 shadowColor: Colors.transparent,
                 floating: true,
               ),
@@ -107,7 +106,6 @@ class MainPage extends StatelessWidget {
                 .reversed
                 .toList()
             : [0, 0, 0, 0, 0, 0, 0],
-        //labels: days,
         enableLabels: false,
         height: 350,
         title: const Padding(
@@ -155,12 +153,6 @@ class MainPage extends StatelessWidget {
 
   Widget _chartFotter(BuildContext context) => Column(
         children: <Widget>[
-          // const Divider(
-          //   color: Color.fromARGB(100, 244, 67, 54),
-          //   indent: Insets.s,
-          //   endIndent: Insets.s,
-          //   thickness: 0.7,
-          // ),
           Padding(
             padding: const EdgeInsets.only(
                 left: Insets.xs, right: Insets.xs, top: Insets.xs),

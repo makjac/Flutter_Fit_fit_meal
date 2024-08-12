@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class AuthTitle extends StatelessWidget {
   final String label;
   const AuthTitle({
-    Key? key,
+    super.key,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

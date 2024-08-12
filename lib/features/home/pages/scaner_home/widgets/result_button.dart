@@ -9,9 +9,9 @@ import 'front_pack_label.dart';
 class ResultButton extends StatelessWidget {
   final Product product;
   const ResultButton({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

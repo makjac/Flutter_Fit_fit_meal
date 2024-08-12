@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/data/models/product_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/result_button.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/result_button.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

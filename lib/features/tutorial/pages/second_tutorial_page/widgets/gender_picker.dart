@@ -9,11 +9,11 @@ class GenderPicker extends StatelessWidget {
   final ValueChanged<bool> onChanged;
   final bool isLadscapeView;
   const GenderPicker({
-    Key? key,
+    super.key,
     this.gender,
     required this.onChanged,
     this.isLadscapeView = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

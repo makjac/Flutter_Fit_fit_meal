@@ -7,10 +7,10 @@ class ProfileGenderPicker extends StatelessWidget {
   final bool? gender;
   final ValueChanged<bool> onChange;
   const ProfileGenderPicker({
-    Key? key,
+    super.key,
     this.gender,
     required this.onChange,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

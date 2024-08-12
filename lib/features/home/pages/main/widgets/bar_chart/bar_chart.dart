@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class BarChart extends StatelessWidget {
   final Widget? subtitle;
   final Widget? footer;
   const BarChart({
-    Key? key,
+    super.key,
     required this.data,
     this.labels,
     this.enableLabels = false,
@@ -32,7 +31,7 @@ class BarChart extends StatelessWidget {
     this.title,
     this.subtitle,
     this.footer,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,26 +62,24 @@ class BarChart extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          ...data
-              .map(
-                (value) => Expanded(
-                  child: Bar(
-                    value: _calculateValue(data, value),
-                    activeColor: activeColor,
-                    inactiveColor: inactiveColor,
-                    label: labels?.length == data.length && enableLabels
-                        ? Text(
-                            labels![labelIndex++],
-                            style: const TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        : null,
-                  ),
-                ),
-              )
-              .toList(),
+          ...data.map(
+            (value) => Expanded(
+              child: Bar(
+                value: _calculateValue(data, value),
+                activeColor: activeColor,
+                inactiveColor: inactiveColor,
+                label: labels?.length == data.length && enableLabels
+                    ? Text(
+                        labels![labelIndex++],
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    : null,
+              ),
+            ),
+          ),
         ],
       ),
     );

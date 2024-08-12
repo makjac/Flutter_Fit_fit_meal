@@ -7,12 +7,12 @@ class BMIChart extends StatelessWidget {
   final double? height;
   final double? width;
   const BMIChart({
-    Key? key,
+    super.key,
     required this.bmi,
     this.decoration,
     this.height,
     this.width,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

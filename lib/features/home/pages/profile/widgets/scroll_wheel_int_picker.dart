@@ -5,11 +5,11 @@ class ScrollWheelIntPicker extends StatelessWidget {
   final int maxValue;
   final ValueChanged<int> onSelected;
   const ScrollWheelIntPicker({
-    Key? key,
+    super.key,
     this.initValue,
     this.maxValue = 130,
     required this.onSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

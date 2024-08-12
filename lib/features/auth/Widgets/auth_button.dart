@@ -7,11 +7,11 @@ class AuthButton extends StatelessWidget {
   final void Function()? onPressed;
 
   const AuthButton({
-    Key? key,
+    super.key,
     required this.formKey,
     required this.label,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
