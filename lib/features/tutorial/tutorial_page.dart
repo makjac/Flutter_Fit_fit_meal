@@ -25,6 +25,12 @@ class _TutorialPageState extends State<TutorialPage> {
   ];
 
   @override
+  void initState() {
+    user = const UserModel();
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
