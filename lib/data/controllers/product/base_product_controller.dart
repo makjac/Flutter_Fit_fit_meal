@@ -1,6 +1,6 @@
 import 'package:fit_fit_meal/data/models/product_model.dart';
 
-abstract class BaseProductController {
+abstract class ProductController {
   Future<List<Product>> loadProductByName(String name);
 
   Future<List<Product>> loadProductByBarcode(String barcode);

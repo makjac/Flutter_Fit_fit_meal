@@ -2,6 +2,7 @@ import 'package:fit_fit_meal/data/models/user_model.dart';
 import 'package:fit_fit_meal/features/tutorial/pages/first_tutorial_page/first_tutorial_apge.dart';
 import 'package:fit_fit_meal/features/tutorial/pages/second_tutorial_page/second_tutorial_page.dart';
 import 'package:fit_fit_meal/features/tutorial/pages/third_tutorial_page/third_tutorial_page.dart';
+import 'package:fit_fit_meal/features/tutorial/widgets/end_tutorial_button.dart';
 import 'package:fit_fit_meal/features/tutorial/widgets/tutorial_footer.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,8 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
-  UserModel user = UserModel();
-  final _pageController = PageController();
+  late UserModel user;
+  late PageController _pageController;
   bool isLastPage = false;
 
   static final List<Widget> _pages = [
@@ -24,6 +25,13 @@ class _TutorialPageState extends State<TutorialPage> {
     const SecondTuorialPage(),
     const ThirdTutorialPage(),
   ];
+
+  @override
+  void initState() {
+    user = const UserModel();
+    _pageController = PageController();
+    super.initState();
+  }
 
   @override
   void dispose() {

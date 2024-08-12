@@ -170,7 +170,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 3,
               ),
               onChanged: (value) => setState(() {
-                user.login = value;
+                user.copyWith(login: value);
               }),
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),
@@ -185,7 +185,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: ProfileGenderPicker(
             gender: user.gender,
             onChange: (value) => setState(() {
-                  user.gender = value;
+                  user.copyWith(gender: value);
                 })),
         icon: const Icon(
           Icons.person,
@@ -198,7 +198,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: ScrollWheelIntPicker(
           initValue: user.age?.toInt(),
           onSelected: (value) => setState(() {
-            user.age = value;
+            user.copyWith(age: value);
           }),
         ),
         icon: const Icon(
@@ -213,7 +213,7 @@ class _ProfilePageState extends State<ProfilePage> {
           initValue: user.height?.toInt(),
           maxValue: 260,
           onSelected: (value) => setState(() {
-            user.height = value;
+            user.copyWith(height: value);
           }),
         ),
         icon: const Icon(
@@ -228,7 +228,7 @@ class _ProfilePageState extends State<ProfilePage> {
           initValue: user.weight?.toInt(),
           maxValue: 250,
           onSelected: (value) => setState(() {
-            user.weight = value;
+            user.copyWith(weight: value);
           }),
         ),
         icon: const Icon(
@@ -253,7 +253,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 foregroundColor: Colors.white,
                 onPicked: (item) => setState(
                   () {
-                    user.pal = item.value;
+                    user.copyWith(pal: item.value);
                   },
                 ),
               ),

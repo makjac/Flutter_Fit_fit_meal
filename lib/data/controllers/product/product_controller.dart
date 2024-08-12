@@ -5,10 +5,10 @@ import 'package:fit_fit_meal/data/controllers/product/base_product_controller.da
 import 'package:fit_fit_meal/data/models/product_model.dart';
 import 'package:fit_fit_meal/data/repository/model_repository/product_repository/product_repository.dart';
 
-class ProductController extends BaseProductController {
+class ProductControllerImpl extends ProductController {
   final ProductRepository _productRepository;
 
-  ProductController({
+  ProductControllerImpl({
     ProductRepository? productRepository,
   }) : _productRepository = productRepository ?? ProductRepository();
 
