@@ -11,9 +11,9 @@ import '../../../../../utils/insets.dart';
 class NutritonFactsLabel extends StatelessWidget {
   final Product product;
   const NutritonFactsLabel({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
