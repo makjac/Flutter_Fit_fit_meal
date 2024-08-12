@@ -198,7 +198,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: ScrollWheelIntPicker(
           initValue: user.age?.toInt(),
           onSelected: (value) => setState(() {
-            user.age = value;
+            user.copyWith(age: value);
           }),
         ),
         icon: const Icon(
