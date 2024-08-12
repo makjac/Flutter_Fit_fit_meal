@@ -64,6 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
             floating: true,
             leading: MenuWidget(),
             shadowColor: Colors.transparent,
+            foregroundColor: Colors.white,
             backgroundColor: Colors.transparent,
           ),
           SliverToBoxAdapter(
