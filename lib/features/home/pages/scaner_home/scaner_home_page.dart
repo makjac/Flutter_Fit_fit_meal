@@ -21,6 +21,7 @@ class ScanerHomePage extends StatelessWidget {
             const SliverAppBar(
               leading: MenuWidget(),
               backgroundColor: Colors.orange,
+              foregroundColor: Colors.white,
               shadowColor: Colors.transparent,
             ),
             SliverToBoxAdapter(
