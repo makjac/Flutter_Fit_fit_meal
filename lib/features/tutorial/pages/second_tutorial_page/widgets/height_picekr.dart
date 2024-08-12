@@ -8,10 +8,10 @@ class HeightPicker extends StatelessWidget {
   final int height;
   final ValueChanged<double> onChanged;
   const HeightPicker({
-    Key? key,
+    super.key,
     required this.height,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
