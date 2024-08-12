@@ -9,9 +9,9 @@ import '../../../data/models/user_model.dart';
 class EndTutorialButton extends StatelessWidget {
   final double height;
   const EndTutorialButton({
-    Key? key,
+    super.key,
     required this.height,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
