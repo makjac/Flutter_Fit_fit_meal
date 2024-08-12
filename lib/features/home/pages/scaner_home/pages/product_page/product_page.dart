@@ -25,6 +25,7 @@ class ProductPage extends StatelessWidget {
               title: Text(product.name),
               centerTitle: true,
               backgroundColor: Colors.transparent,
+              foregroundColor: Colors.white,
               shadowColor: Colors.transparent,
             ),
             SliverToBoxAdapter(
