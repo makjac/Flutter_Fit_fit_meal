@@ -15,18 +15,19 @@ class TutorialPage extends StatefulWidget {
 
 class _TutorialPageState extends State<TutorialPage> {
   late UserModel user;
-  final _pageController = PageController();
+  late PageController _pageController;
   bool isLastPage = false;
 
   static final List<Widget> _pages = [
     const FirstTutorialPage(),
     const SecondTuorialPage(),
-    ThirdTutorialPage(),
+    const ThirdTutorialPage(),
   ];
 
   @override
   void initState() {
     user = const UserModel();
+    _pageController = PageController();
     super.initState();
   }
 
