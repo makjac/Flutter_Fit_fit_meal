@@ -12,6 +12,18 @@ class ActivityItem extends Equatable {
     required this.value,
   });
 
+  ActivityItem copyWith(
+    String? lottiePath,
+    String? label,
+    double? value,
+  ) {
+    return ActivityItem(
+      lottiePath: lottiePath ?? this.lottiePath,
+      label: label ?? this.label,
+      value: value ?? this.value,
+    );
+  }
+
   @override
   List<Object?> get props => [
         lottiePath,
