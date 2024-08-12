@@ -22,7 +22,7 @@ class _TutorialPageState extends State<TutorialPage> {
   static final List<Widget> _pages = [
     const FirstTutorialPage(),
     const SecondTuorialPage(),
-    ThirdTutorialPage(),
+    const ThirdTutorialPage(),
   ];
 
   @override
