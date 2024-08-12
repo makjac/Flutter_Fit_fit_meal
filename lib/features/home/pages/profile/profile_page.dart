@@ -253,7 +253,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 foregroundColor: Colors.white,
                 onPicked: (item) => setState(
                   () {
-                    user.pal = item.value;
+                    user.copyWith(pal: item.value);
                   },
                 ),
               ),
