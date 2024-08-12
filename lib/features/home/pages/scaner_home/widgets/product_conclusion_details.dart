@@ -1,6 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_container.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/product_container.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
