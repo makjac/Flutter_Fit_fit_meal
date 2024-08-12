@@ -23,23 +23,19 @@ class UserModel extends Equatable {
     this.pal,
   });
 
-  static UserModel fromSnapshot(DocumentSnapshot snap) => UserModel(
-        uid: snap.id,
-        login: snap.data().toString().contains('login')
-            ? snap['login'] as String?
-            : "",
-        gender: snap.data().toString().contains('gender')
-            ? snap['gender'] as bool?
-            : true,
-        weight: snap.data().toString().contains('weight')
-            ? snap['weight'] as num?
-            : 0,
-        height: snap.data().toString().contains('height')
-            ? snap['height'] as num?
-            : 0,
-        age: snap.data().toString().contains('age') ? snap['age'] as num? : 0,
-        pal: snap.data().toString().contains('pal') ? snap['pal'] as num? : 0,
-      );
+  static UserModel fromSnapshot(DocumentSnapshot snap) {
+    final data = snap.data() as Map<String, dynamic>?;
+
+    return UserModel(
+      uid: snap.id,
+      login: data?['login'] as String? ?? "",
+      gender: data?['gender'] as bool? ?? true,
+      weight: data?['weight'] as num? ?? 0,
+      height: data?['height'] as num? ?? 0,
+      age: data?['age'] as num? ?? 0,
+      pal: data?['pal'] as num? ?? 0,
+    );
+  }
 
   static UserModel fromSharedPreferences() => UserModel(
         uid: UserSharedPreferences.getUserUID() ?? "",
