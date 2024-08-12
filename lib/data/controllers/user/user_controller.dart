@@ -5,7 +5,7 @@ import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 
 import 'base_user_controller.dart';
 
-class UserController extends BaseUserController {
+class UserControllerImpl extends UserController {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
 
@@ -18,7 +18,7 @@ class UserController extends BaseUserController {
     }
   }
 
-  UserController(
+  UserControllerImpl(
       {AuthRepository? authRepository, UserRepository? userRepository})
       : _authRepository = authRepository ?? AuthRepository(),
         _userRepository = userRepository ?? UserRepository();
