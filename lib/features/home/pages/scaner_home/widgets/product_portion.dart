@@ -156,7 +156,10 @@ class ProductPortion extends StatelessWidget {
                       return const AutoSizeText(
                         "Save",
                         maxLines: 1,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
                       );
                     },
                   ),
