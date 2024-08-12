@@ -10,11 +10,12 @@ import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
 import '../../../../widgets/buttons/activity_choice_button.dart';
 
 class ThirdTutorialPage extends StatefulWidget {
-  ActivityItem? currentItem;
-  ThirdTutorialPage({
-    Key? key,
+  final ActivityItem? currentItem;
+
+  const ThirdTutorialPage({
+    super.key,
     this.currentItem,
-  }) : super(key: key);
+  });
 
   @override
   State<ThirdTutorialPage> createState() => _ThirdTutorialPageState();
@@ -86,12 +87,12 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
         children: [
           ...ActivityItems.activities.map(
             (activity) => Opacity(
-                opacity:
-                    widget.currentItem == activity || widget.currentItem == null
-                        ? 1.0
-                        : 0.7,
-                child: ActivityChoiceButton(
-                    activity: activity,
+              opacity:
+                  widget.currentItem == activity || widget.currentItem == null
+                      ? 1.0
+                      : 0.7,
+              child: ActivityChoiceButton(
+                activity: activity,
                 onPicked: (item) => setState(
                   () {
                     widget.currentItem?.merge(item);
@@ -99,7 +100,7 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
                 ),
               ),
             ),
-                ),
+          ),
         ],
       );
 }
