@@ -93,10 +93,11 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
                         : 0.7,
                 child: ActivityChoiceButton(
                     activity: activity,
-                    onPicked: (item) => setState(() {
-                          widget.currentItem = item;
-                        })),
-              )),
+                onPicked: (item) => setState(
+                  () {
+                    widget.currentItem?.merge(item);
+                  },
+                ),
         ],
       );
 }
