@@ -11,13 +11,13 @@ class LabelledData extends StatelessWidget {
   final double? width;
   final Decoration? decoration;
   const LabelledData({
-    Key? key,
+    super.key,
     required this.label,
     required this.data,
     this.height,
     this.width,
     this.decoration,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
