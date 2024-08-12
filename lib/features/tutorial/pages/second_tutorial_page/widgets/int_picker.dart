@@ -1,25 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:fit_fit_meal/screens/tutorial/utils/tutorial_elements_shape.dart';
+import 'package:fit_fit_meal/features/tutorial/utils/tutorial_elements_shape.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/insets.dart';
 
-// ignore: must_be_immutable
-class IntPicker extends StatelessWidget {
-  int value;
+class IntPicker extends StatefulWidget {
+  final int value;
   final String label;
   final ValueChanged<int> onChanged;
-  bool isUnit;
-  String unit;
-  IntPicker({
-    Key? key,
+  const IntPicker({
+    super.key,
     this.value = 0,
     required this.label,
     required this.onChanged,
-    this.isUnit = false,
-    this.unit = "",
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
