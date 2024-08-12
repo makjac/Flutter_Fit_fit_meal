@@ -35,6 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.orange,
       floatingActionButton: _isChange()
           ? FloatingActionButton.extended(
+              backgroundColor: Colors.red,
               onPressed: () => BlocProvider.of<UserBloc>(context)
                   .add(UpdateUserData(user: user)),
               label: const Text("Save"),
@@ -63,6 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
             floating: true,
             leading: MenuWidget(),
             shadowColor: Colors.transparent,
+            foregroundColor: Colors.white,
             backgroundColor: Colors.transparent,
           ),
           SliverToBoxAdapter(
@@ -170,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 3,
               ),
               onChanged: (value) => setState(() {
-                user.copyWith(login: value);
+                user = user.copyWith(login: value);
               }),
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),
@@ -185,7 +187,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: ProfileGenderPicker(
             gender: user.gender,
             onChange: (value) => setState(() {
-                  user.copyWith(gender: value);
+                  user = user.copyWith(gender: value);
                 })),
         icon: const Icon(
           Icons.person,
@@ -198,7 +200,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: ScrollWheelIntPicker(
           initValue: user.age?.toInt(),
           onSelected: (value) => setState(() {
-            user.copyWith(age: value);
+            user = user.copyWith(age: value);
           }),
         ),
         icon: const Icon(
@@ -213,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
           initValue: user.height?.toInt(),
           maxValue: 260,
           onSelected: (value) => setState(() {
-            user.copyWith(height: value);
+            user = user.copyWith(height: value);
           }),
         ),
         icon: const Icon(
@@ -228,7 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
           initValue: user.weight?.toInt(),
           maxValue: 250,
           onSelected: (value) => setState(() {
-            user.copyWith(weight: value);
+            user = user.copyWith(weight: value);
           }),
         ),
         icon: const Icon(
@@ -253,7 +255,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 foregroundColor: Colors.white,
                 onPicked: (item) => setState(
                   () {
-                    user.copyWith(pal: item.value);
+                    user = user.copyWith(pal: item.value);
                   },
                 ),
               ),

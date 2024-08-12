@@ -23,6 +23,7 @@ class ConclusionPage extends StatelessWidget {
         title: const Text("Conclusion"),
         centerTitle: true,
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
         shadowColor: Colors.transparent,
       ),
       backgroundColor: Colors.orange,
