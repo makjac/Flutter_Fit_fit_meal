@@ -17,6 +17,7 @@ class ProductsResults extends StatelessWidget {
         title: const Text("Results"),
         centerTitle: true,
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
         shadowColor: Colors.transparent,
       ),
       backgroundColor: Colors.orange,
