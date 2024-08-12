@@ -20,7 +20,7 @@ class BarChart extends StatelessWidget {
   final Widget? subtitle;
   final Widget? footer;
   const BarChart({
-    Key? key,
+    super.key,
     required this.data,
     this.labels,
     this.enableLabels = false,
@@ -32,7 +32,7 @@ class BarChart extends StatelessWidget {
     this.title,
     this.subtitle,
     this.footer,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
