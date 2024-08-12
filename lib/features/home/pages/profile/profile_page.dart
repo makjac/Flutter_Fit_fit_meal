@@ -213,7 +213,7 @@ class _ProfilePageState extends State<ProfilePage> {
           initValue: user.height?.toInt(),
           maxValue: 260,
           onSelected: (value) => setState(() {
-            user.height = value;
+            user.copyWith(height: value);
           }),
         ),
         icon: const Icon(
