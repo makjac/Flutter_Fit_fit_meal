@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/main/widgets/bar_chart/bar_chart.dart';
-import 'package:fit_fit_meal/screens/home/pages/main/widgets/bmi_chart/bmi_chart.dart';
-import 'package:fit_fit_meal/screens/home/pages/main/widgets/labelled_data.dart';
+import 'package:fit_fit_meal/features/home/pages/main/widgets/bar_chart/bar_chart.dart';
+import 'package:fit_fit_meal/features/home/pages/main/widgets/bmi_chart/bmi_chart.dart';
+import 'package:fit_fit_meal/features/home/pages/main/widgets/labelled_data.dart';
 import 'package:fit_fit_meal/utils/calorie_calculator.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/boxDecoration/shadow_radius_all.dart';
