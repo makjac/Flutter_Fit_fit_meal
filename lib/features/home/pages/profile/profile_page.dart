@@ -228,7 +228,7 @@ class _ProfilePageState extends State<ProfilePage> {
           initValue: user.weight?.toInt(),
           maxValue: 250,
           onSelected: (value) => setState(() {
-            user.weight = value;
+            user.copyWith(weight: value);
           }),
         ),
         icon: const Icon(
