@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/barcode_scan_button.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_lottie_circle.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_search_bar.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/barcode_scan_button.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/product_lottie_circle.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/product_search_bar.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/widgets/menu/menu_widget.dart';
 import 'package:flutter/material.dart';
