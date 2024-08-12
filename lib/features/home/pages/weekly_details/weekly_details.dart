@@ -24,6 +24,7 @@ class WeeklyDetails extends StatelessWidget {
               title: Text("weekly details"),
               centerTitle: true,
               backgroundColor: Colors.orange,
+              foregroundColor: Colors.white,
               shadowColor: Colors.transparent,
               floating: true,
             ),
