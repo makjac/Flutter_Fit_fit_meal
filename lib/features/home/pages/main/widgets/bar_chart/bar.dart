@@ -12,14 +12,14 @@ class Bar extends StatelessWidget {
   final double? width;
 
   const Bar({
-    Key? key,
+    super.key,
     required this.value,
     this.label,
     this.activeColor,
     this.inactiveColor,
     this.height = double.infinity,
     this.width = double.infinity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
