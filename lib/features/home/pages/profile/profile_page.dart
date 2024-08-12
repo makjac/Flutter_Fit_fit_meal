@@ -185,7 +185,7 @@ class _ProfilePageState extends State<ProfilePage> {
         body: ProfileGenderPicker(
             gender: user.gender,
             onChange: (value) => setState(() {
-                  user.gender = value;
+                  user.copyWith(gender: value);
                 })),
         icon: const Icon(
           Icons.person,
