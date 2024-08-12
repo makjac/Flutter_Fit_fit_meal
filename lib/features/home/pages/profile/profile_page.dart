@@ -35,6 +35,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.orange,
       floatingActionButton: _isChange()
           ? FloatingActionButton.extended(
+              backgroundColor: Colors.red,
               onPressed: () => BlocProvider.of<UserBloc>(context)
                   .add(UpdateUserData(user: user)),
               label: const Text("Save"),
