@@ -62,6 +62,25 @@ class UserModel extends Equatable {
     };
   }
 
+  UserModel copyWith({
+    String? login,
+    bool? gender,
+    num? weight,
+    num? height,
+    num? age,
+    num? pal,
+  }) {
+    return UserModel(
+      uid: uid,
+      login: login ?? this.login,
+      gender: gender ?? this.gender,
+      weight: weight ?? this.weight,
+      height: height ?? this.height,
+      age: age ?? this.age,
+      pal: pal ?? this.pal,
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
   @override
