@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fit_fit_meal/data/controllers/user/base_user_controller.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
 import 'package:fit_fit_meal/data/models/user_model.dart';
 
@@ -17,7 +18,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   UserBloc(
       {UserController? userController, ActivityRepository? activityRepository})
-      : _userController = userController ?? UserController(),
+      : _userController = userController ?? UserControllerImpl(),
         _activityRepository = activityRepository ?? ActivityRepository(),
         super(UserInitial()) {
     on<LoadUserData>(_load);

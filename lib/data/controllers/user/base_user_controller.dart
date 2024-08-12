@@ -1,6 +1,6 @@
 import 'package:fit_fit_meal/data/models/user_model.dart';
 
-abstract class BaseUserController {
+abstract class UserController {
   bool checkUser();
 
   Future<void> signInUser({required String email, required String passwd});
