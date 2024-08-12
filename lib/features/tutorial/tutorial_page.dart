@@ -6,8 +6,6 @@ import 'package:fit_fit_meal/features/tutorial/widgets/end_tutorial_button.dart'
 import 'package:fit_fit_meal/features/tutorial/widgets/tutorial_footer.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/end_tutorial_button.dart';
-
 class TutorialPage extends StatefulWidget {
   const TutorialPage({super.key});
 
