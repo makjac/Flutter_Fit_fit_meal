@@ -1,21 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 
-// ignore: must_be_immutable
 class UserModel extends Equatable {
-  String uid;
-  String? login;
-  bool? gender;
-  num? weight;
-  num? height;
-  num? age;
-  num? pal;
+  final String uid;
+  final String? login;
+  final bool? gender;
+  final num? weight;
+  final num? height;
+  final num? age;
+  final num? pal;
 
-  UserModel({
+  const UserModel({
     this.uid = "",
     this.login,
     this.gender,
