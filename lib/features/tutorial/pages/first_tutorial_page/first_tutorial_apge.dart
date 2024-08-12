@@ -10,8 +10,8 @@ import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
 
 class FirstTutorialPage extends StatefulWidget {
   const FirstTutorialPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<FirstTutorialPage> createState() => _FirstTutorialPageState();
