@@ -11,9 +11,9 @@ class ConclusionPage extends StatelessWidget {
   final Product product;
 
   const ConclusionPage({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
