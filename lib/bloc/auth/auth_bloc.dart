@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fit_fit_meal/data/controllers/user/base_user_controller.dart';
 
 import '../../data/controllers/user/user_controller.dart';
 
@@ -12,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserController _userController;
 
   AuthBloc({UserController? userController})
-      : _userController = userController ?? UserController(),
+      : _userController = userController ?? UserControllerImpl(),
         super(AuthInitial()) {
     on<CheckUser>(_checkUser);
     on<SignIn>(_signIn);
