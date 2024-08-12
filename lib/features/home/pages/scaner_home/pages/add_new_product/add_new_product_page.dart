@@ -24,6 +24,7 @@ class AddNewProductPage extends StatelessWidget {
         title: const Text("Add new Product"),
         centerTitle: true,
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
         shadowColor: Colors.transparent,
       ),
       backgroundColor: Colors.orange,
