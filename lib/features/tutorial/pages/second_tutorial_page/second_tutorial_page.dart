@@ -10,8 +10,8 @@ import '../../../../widgets/boxDecoration/home_gradnient_bacground.dart';
 
 class SecondTuorialPage extends StatefulWidget {
   const SecondTuorialPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<SecondTuorialPage> createState() => _SecondTuorialPageState();
@@ -91,8 +91,6 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
             Expanded(
               child: IntPicker(
                 label: "Wheight",
-                unit: "kg",
-                isUnit: true,
                 value: _wheight,
                 onChanged: (value) => setState(
                   () => _wheight = value,
@@ -151,8 +149,6 @@ class _SecondTuorialPageState extends State<SecondTuorialPage> {
                           Expanded(
                             child: IntPicker(
                               label: "Wheight",
-                              unit: "kg",
-                              isUnit: true,
                               value: _wheight,
                               onChanged: (value) => setState(
                                 () => _wheight = value,
