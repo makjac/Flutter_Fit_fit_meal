@@ -12,9 +12,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../utils/insets.dart';
 
-List<double> data = [2230, 1968, 1000, 2777, 2000, 2150, 2333];
-List<String> days = ["M", "T", "W", "T", "F", "S", "S"];
-
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
