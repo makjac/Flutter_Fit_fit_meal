@@ -86,7 +86,8 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
         mainAxisSpacing: Insets.xs,
         crossAxisSpacing: Insets.xs,
         children: [
-          ...ActivityItems.activities.map((activity) => Opacity(
+          ...ActivityItems.activities.map(
+            (activity) => Opacity(
                 opacity:
                     widget.currentItem == activity || widget.currentItem == null
                         ? 1.0
@@ -97,6 +98,9 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
                   () {
                     widget.currentItem?.merge(item);
                   },
+                ),
+              ),
+            ),
                 ),
         ],
       );
