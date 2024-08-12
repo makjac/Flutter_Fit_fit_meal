@@ -9,12 +9,12 @@ class ProfileLabel extends StatelessWidget {
   final Widget icon;
   final bool isDivider;
   const ProfileLabel({
-    Key? key,
+    super.key,
     required this.title,
     required this.body,
     required this.icon,
     this.isDivider = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
