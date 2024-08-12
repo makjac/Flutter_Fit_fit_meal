@@ -1,9 +1,9 @@
 import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/data/models/user_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/profile/widgets/avatar.dart';
-import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_default_title.dart';
-import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_gender_picker.dart';
-import 'package:fit_fit_meal/screens/home/pages/profile/widgets/profile_label.dart';
+import 'package:fit_fit_meal/features/home/pages/profile/widgets/avatar.dart';
+import 'package:fit_fit_meal/features/home/pages/profile/widgets/profile_default_title.dart';
+import 'package:fit_fit_meal/features/home/pages/profile/widgets/profile_gender_picker.dart';
+import 'package:fit_fit_meal/features/home/pages/profile/widgets/profile_label.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_cross.dart';
