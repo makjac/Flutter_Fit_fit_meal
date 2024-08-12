@@ -6,9 +6,9 @@ import '../../../widgets/inputDecoration/border_top_left.dart';
 class AuthEmailTextField extends StatelessWidget {
   final void Function(String?)? onSaved;
   const AuthEmailTextField({
-    Key? key,
+    super.key,
     required this.onSaved,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
