@@ -4,9 +4,9 @@ import 'package:lottie/lottie.dart';
 class Avatar extends StatelessWidget {
   final String lottiePath;
   const Avatar({
-    Key? key,
+    super.key,
     required this.lottiePath,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
