@@ -24,6 +24,14 @@ class ActivityItem extends Equatable {
     );
   }
 
+  ActivityItem merge(ActivityItem model) {
+    return ActivityItem(
+      lottiePath: model.lottiePath,
+      label: model.label,
+      value: model.value,
+    );
+  }
+
   @override
   List<Object?> get props => [
         lottiePath,
