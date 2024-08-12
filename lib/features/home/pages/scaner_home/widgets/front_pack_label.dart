@@ -8,9 +8,9 @@ import '../../../../../utils/calorie_calculator.dart';
 class FrontPackLabel extends StatelessWidget {
   final Product product;
   const FrontPackLabel({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
