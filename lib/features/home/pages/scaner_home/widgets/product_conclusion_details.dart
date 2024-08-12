@@ -9,9 +9,9 @@ import '../../../../../utils/insets.dart';
 class ProductConclusionDetails extends StatelessWidget {
   final Product product;
   const ProductConclusionDetails({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
