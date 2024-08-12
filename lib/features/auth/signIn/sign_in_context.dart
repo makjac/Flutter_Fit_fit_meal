@@ -1,10 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
-import 'package:fit_fit_meal/screens/auth/Widgets/auth_button.dart';
-import 'package:fit_fit_meal/screens/auth/Widgets/auth_email_text_field.dart';
-import 'package:fit_fit_meal/screens/auth/Widgets/auth_loading_button.dart';
-import 'package:fit_fit_meal/screens/auth/Widgets/auth_title.dart';
+import 'package:fit_fit_meal/features/auth/Widgets/auth_button.dart';
+import 'package:fit_fit_meal/features/auth/Widgets/auth_email_text_field.dart';
+import 'package:fit_fit_meal/features/auth/Widgets/auth_loading_button.dart';
+import 'package:fit_fit_meal/features/auth/Widgets/auth_title.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/validator.dart';
 import 'package:fit_fit_meal/widgets/inputDecoration/border_none.dart';
