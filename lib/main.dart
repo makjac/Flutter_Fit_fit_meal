@@ -2,19 +2,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
 import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/data/models/product_model.dart';
+import 'package:fit_fit_meal/features/auth/forgot_password/forgot_passwd_page.dart';
+import 'package:fit_fit_meal/features/auth/signIn/signi_n_page.dart';
+import 'package:fit_fit_meal/features/auth/signUp/sign_up_page.dart';
+import 'package:fit_fit_meal/features/home/home_page.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/pages/add_new_product/add_new_product_page.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/pages/conclusion_page/conclusion_page.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/pages/product_page/product_page.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/pages/products_result/products_results.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/pages/scaner/barcode_scaner.dart';
+import 'package:fit_fit_meal/features/home/pages/weekly_details/weekly_details.dart';
+import 'package:fit_fit_meal/features/tutorial/tutorial_page.dart';
+import 'package:fit_fit_meal/features/welcome/welcome_page.dart';
 import 'package:fit_fit_meal/firebase_options.dart';
-import 'package:fit_fit_meal/screens/auth/forgot_password/forgot_passwd_page.dart';
-import 'package:fit_fit_meal/screens/auth/signIn/signi_n_page.dart';
-import 'package:fit_fit_meal/screens/auth/signUp/sign_up_page.dart';
-import 'package:fit_fit_meal/screens/home/home_page.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/add_new_product/add_new_product_page.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/conclusion_page/conclusion_page.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/product_page/product_page.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/products_result/products_results.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/pages/scaner/barcode_scaner.dart';
-import 'package:fit_fit_meal/screens/home/pages/weekly_details/weekly_details.dart';
-import 'package:fit_fit_meal/screens/tutorial/tutorial_page.dart';
-import 'package:fit_fit_meal/screens/welcome/welcome_page.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,8 +48,8 @@ Future main() async {
 
 class FitFitMeal extends StatefulWidget {
   const FitFitMeal({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<FitFitMeal> createState() => _FitFitMealState();

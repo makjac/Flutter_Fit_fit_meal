@@ -13,12 +13,12 @@ class ActivityChoiceButton extends StatelessWidget {
   final Color backgroundColor;
   final Color foregroundColor;
   const ActivityChoiceButton({
-    Key? key,
+    super.key,
     required this.activity,
     required this.onPicked,
     this.backgroundColor = Colors.white,
     this.foregroundColor = Colors.red,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

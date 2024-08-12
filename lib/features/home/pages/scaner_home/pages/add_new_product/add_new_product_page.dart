@@ -1,6 +1,6 @@
 import 'package:fit_fit_meal/bloc/product/product_bloc.dart';
 import 'package:fit_fit_meal/data/models/product_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/add_prod_dropdown.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/add_prod_dropdown.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/integer_text_input_formater.dart';
 import 'package:fit_fit_meal/utils/null_objects.dart';

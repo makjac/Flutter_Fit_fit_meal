@@ -9,27 +9,18 @@ class ProfileLabel extends StatelessWidget {
   final Widget icon;
   final bool isDivider;
   const ProfileLabel({
-    Key? key,
+    super.key,
     required this.title,
     required this.body,
     required this.icon,
     this.isDivider = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.topCenter,
       children: <Widget>[
-        // Padding(
-        //     padding: const EdgeInsets.only(top: 20),
-        //     child: ClipOval(
-        //       child: Container(
-        //         color: Colors.white,
-        //         width: 200,
-        //         height: 100,
-        //       ),
-        //     )),
         Container(
           margin: const EdgeInsets.only(top: 30),
           padding: const EdgeInsets.only(

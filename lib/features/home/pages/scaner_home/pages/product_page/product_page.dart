@@ -1,18 +1,18 @@
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_portion.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/nutrition_facts_label.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/product_header.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/product_portion.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fit_fit_meal/data/models/product_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/nutrition_facts_label.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_header.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 
 class ProductPage extends StatelessWidget {
   final Product product;
 
   const ProductPage({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

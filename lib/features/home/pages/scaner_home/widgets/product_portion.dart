@@ -2,7 +2,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fit_fit_meal/bloc/user/user_bloc.dart';
 import 'package:fit_fit_meal/data/models/food_label_model.dart';
-import 'package:fit_fit_meal/screens/home/pages/scaner_home/widgets/product_container.dart';
+import 'package:fit_fit_meal/features/home/pages/scaner_home/widgets/product_container.dart';
 import 'package:fit_fit_meal/utils/calorie_calculator.dart';
 import 'package:fit_fit_meal/utils/decimal_text_input_formatter.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +17,9 @@ class ProductPortion extends StatelessWidget {
   final Product product;
 
   const ProductPortion({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

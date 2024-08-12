@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fit_fit_meal/bloc/auth/auth_bloc.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +23,10 @@ class MenuPage extends StatelessWidget {
   final MenuElement currentElement;
   final ValueChanged<MenuElement> onSelectedElement;
   const MenuPage({
-    Key? key,
+    super.key,
     required this.currentElement,
     required this.onSelectedElement,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +39,7 @@ class MenuPage extends StatelessWidget {
             const Spacer(),
             _menuTitle(),
             const Spacer(flex: 6),
-            ...MenuElements.elements
-                .map((element) => _buildMenuItem(element))
-                .toList(),
+            ...MenuElements.elements.map((element) => _buildMenuItem(element)),
             const Spacer(flex: 10),
             _logoutButton(context),
             const Spacer(),
