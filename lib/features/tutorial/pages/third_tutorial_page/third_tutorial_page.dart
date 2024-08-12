@@ -29,6 +29,7 @@ class _ThirdTutorialPageState extends State<ThirdTutorialPage> {
       final item = ActivityItems.activities.firstWhere(
           (activity) => activity.value == UserSharedPreferences.getUserPAL());
       widget.currentItem?.merge(item);
+    } catch (_) {}
     super.initState();
   }
 
