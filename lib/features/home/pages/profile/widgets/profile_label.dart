@@ -21,15 +21,6 @@ class ProfileLabel extends StatelessWidget {
     return Stack(
       alignment: Alignment.topCenter,
       children: <Widget>[
-        // Padding(
-        //     padding: const EdgeInsets.only(top: 20),
-        //     child: ClipOval(
-        //       child: Container(
-        //         color: Colors.white,
-        //         width: 200,
-        //         height: 100,
-        //       ),
-        //     )),
         Container(
           margin: const EdgeInsets.only(top: 30),
           padding: const EdgeInsets.only(
