@@ -10,9 +10,9 @@ class ProductHeader extends StatelessWidget {
   final Product product;
 
   const ProductHeader({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
