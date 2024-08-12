@@ -5,10 +5,10 @@ class ProductContainer extends StatelessWidget {
   final Widget child;
   final bool shadow;
   const ProductContainer({
-    Key? key,
+    super.key,
     required this.child,
     this.shadow = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
