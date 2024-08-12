@@ -6,9 +6,9 @@ import '../../../../../utils/insets.dart';
 class AddProdDropdown extends StatefulWidget {
   final ValueChanged<String?> onChanged;
   const AddProdDropdown({
-    Key? key,
+    super.key,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<AddProdDropdown> createState() => _AddProdDropdownState();
