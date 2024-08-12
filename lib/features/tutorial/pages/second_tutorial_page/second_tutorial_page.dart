@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/gender_picker.dart';
-import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/height_picekr.dart';
-import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/widgets/int_picker.dart';
+import 'package:fit_fit_meal/features/tutorial/pages/second_tutorial_page/widgets/gender_picker.dart';
+import 'package:fit_fit_meal/features/tutorial/pages/second_tutorial_page/widgets/height_picekr.dart';
+import 'package:fit_fit_meal/features/tutorial/pages/second_tutorial_page/widgets/int_picker.dart';
 import 'package:fit_fit_meal/utils/insets.dart';
 import 'package:fit_fit_meal/utils/user_shared_preferences.dart';
 import 'package:flutter/material.dart';
