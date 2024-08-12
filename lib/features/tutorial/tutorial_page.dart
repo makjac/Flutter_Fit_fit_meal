@@ -1,9 +1,9 @@
 import 'package:fit_fit_meal/data/models/user_model.dart';
-import 'package:fit_fit_meal/screens/tutorial/pages/first_tutorial_page/first_tutorial_apge.dart';
-import 'package:fit_fit_meal/screens/tutorial/pages/second_tutorial_page/second_tutorial_page.dart';
-import 'package:fit_fit_meal/screens/tutorial/pages/third_tutorial_page/third_tutorial_page.dart';
-import 'package:fit_fit_meal/screens/tutorial/widgets/end_tutorial_button.dart';
-import 'package:fit_fit_meal/screens/tutorial/widgets/tutorial_footer.dart';
+import 'package:fit_fit_meal/features/tutorial/pages/first_tutorial_page/first_tutorial_apge.dart';
+import 'package:fit_fit_meal/features/tutorial/pages/second_tutorial_page/second_tutorial_page.dart';
+import 'package:fit_fit_meal/features/tutorial/pages/third_tutorial_page/third_tutorial_page.dart';
+import 'package:fit_fit_meal/features/tutorial/widgets/end_tutorial_button.dart';
+import 'package:fit_fit_meal/features/tutorial/widgets/tutorial_footer.dart';
 import 'package:flutter/material.dart';
 
 class TutorialPage extends StatefulWidget {
