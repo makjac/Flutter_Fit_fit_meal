@@ -16,6 +16,25 @@ class IntPicker extends StatefulWidget {
   });
 
   @override
+  State<IntPicker> createState() => _IntPickerState();
+}
+
+class _IntPickerState extends State<IntPicker> {
+  void increse() {
+    setState(() {
+      widget.onChanged(widget.value + 1);
+    });
+  }
+
+  void decrease() {
+    setState(() {
+      if (widget.value > 0) {
+        widget.onChanged(widget.value - 1);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -29,7 +48,7 @@ class IntPicker extends StatefulWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             AutoSizeText(
-              label,
+              widget.label,
               maxLines: 1,
               style: const TextStyle(
                   color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),
@@ -41,7 +60,7 @@ class IntPicker extends StatefulWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   InkWell(
-                    onTap: () => onChanged(++value),
+                    onTap: increse,
                     child: const CircleAvatar(
                       radius: 14,
                       backgroundColor: Colors.red,
@@ -50,20 +69,15 @@ class IntPicker extends StatefulWidget {
                     ),
                   ),
                   AutoSizeText(
-                    "$value",
+                    "${widget.value}",
                     maxLines: 1,
                     style: const TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 23),
                   ),
-                  //Flexible(flex: 3, child: _numberField()),
                   InkWell(
-                    onTap: () {
-                      if (value > 0) {
-                        onChanged(--value);
-                      }
-                    },
+                    onTap: decrease,
                     child: const CircleAvatar(
                       radius: 14,
                       backgroundColor: Colors.red,
