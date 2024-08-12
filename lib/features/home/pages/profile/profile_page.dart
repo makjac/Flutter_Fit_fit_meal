@@ -170,7 +170,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 3,
               ),
               onChanged: (value) => setState(() {
-                user.login = value;
+                user.copyWith(login: value);
               }),
               cursorColor: Colors.white,
               style: const TextStyle(color: Colors.white),
