@@ -14,7 +14,7 @@ class TutorialPage extends StatefulWidget {
 }
 
 class _TutorialPageState extends State<TutorialPage> {
-  UserModel user = UserModel();
+  late UserModel user;
   final _pageController = PageController();
   bool isLastPage = false;
 
